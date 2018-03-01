@@ -6,12 +6,17 @@
 //  Copyright © 2018 MC. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum UIConfig
 {
     enum SearchBar
     {
         static let placeholder = "搜尋"
+    }
+    
+    enum Grossing
+    {
+        static let sectionHeight: CGFloat = 200.0
     }
 }
