@@ -13,7 +13,7 @@ class MainViewController: UIViewController
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var freeAppTableView: UITableView!
     
-    private var grossingAppCollectionView: UICollectionView! = nil
+    private var grossingAppView: GrossingAppView! = nil
     
     override func viewDidLoad()
     {
@@ -34,18 +34,9 @@ class MainViewController: UIViewController
     
     private func createGrossingAppView()
     {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConfig.Grossing.sectionHeight)
-        
-        grossingAppCollectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        grossingAppCollectionView.backgroundColor = .green
-        grossingAppCollectionView.isSpringLoaded = true
-        grossingAppCollectionView.allowsSelection = false
-        grossingAppCollectionView.showsHorizontalScrollIndicator = false
-        
-        freeAppTableView.tableHeaderView = grossingAppCollectionView
+        grossingAppView = GrossingAppView(frame: frame)
+        freeAppTableView.tableHeaderView = grossingAppView
     }
 }
 
