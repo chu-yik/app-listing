@@ -21,5 +21,6 @@ enum UIConfig
         static let cellHeight: CGFloat = 170.0
         static let labelHeight: CGFloat = 30.0
         static let labelTitle = "推介"
+        static let labelFont = UIFont.boldSystemFont(ofSize: 20)
     }
 }
