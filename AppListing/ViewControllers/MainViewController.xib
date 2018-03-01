@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="AppListing" customModuleProvider="target">
             <connections>
+                <outlet property="freeAppTableView" destination="y4W-5M-PP5" id="JEf-hj-pYA"/>
+                <outlet property="searchBar" destination="nDg-3o-fDm" id="3T5-UL-xvg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -13,6 +13,7 @@
 		4CD2B8652047E27300E21BF4 /* AppListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8642047E27300E21BF4 /* AppListingTests.swift */; };
 		4CD2B8722047E40B00E21BF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8702047E40B00E21BF4 /* MainViewController.swift */; };
 		4CD2B8732047E40B00E21BF4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8712047E40B00E21BF4 /* MainViewController.xib */; };
+		4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8762047E84900E21BF4 /* UIConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		4CD2B8662047E27300E21BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B8702047E40B00E21BF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4CD2B8712047E40B00E21BF4 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		4CD2B8762047E84900E21BF4 /* UIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		4CD2B84E2047E27200E21BF4 /* AppListing */ = {
 			isa = PBXGroup;
 			children = (
+				4CD2B8752047E83500E21BF4 /* Configurations */,
 				4CD2B8742047E41600E21BF4 /* SupportingFiles */,
 				4CD2B86F2047E3E900E21BF4 /* ViewControllers */,
 				4CD2B8562047E27200E21BF4 /* Assets.xcassets */,
@@ -110,6 +113,14 @@
 				4CD2B85B2047E27200E21BF4 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		4CD2B8752047E83500E21BF4 /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B8762047E84900E21BF4 /* UIConfig.swift */,
+			);
+			path = Configurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */,
 				4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */,
 				4CD2B8722047E40B00E21BF4 /* MainViewController.swift in Sources */,
 			);
