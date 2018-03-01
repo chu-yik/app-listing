@@ -7,28 +7,61 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-/// Implementation of the AppDataSourceProtocol, which in term conforms to data source
-/// for both UITableView and UICollectionView
+/// Implementation of the AppDataSourceProtocol, which in term conforms to both
+/// UITableViewDataSource and UICollectionViewDataSource
 class ITunesDataSource: NSObject
 {    
     weak var delegate: AppDataSourceDelegate?
     
     var grossingApps: [App] = []
     
+    private var api: DataAPIProtocol
     private var key: ParsingKeyProtocol
     
-    init(key: ParsingKeyProtocol)
+    init(api: DataAPIProtocol, key: ParsingKeyProtocol)
     {
+        self.api = api
         self.key = key
     }
 }
 
 extension ITunesDataSource: AppDataSourceProtocol
 {
-    func fetchData()
+    func fetchGrossingApps()
     {
+        fetch(from: api.grossingApp, ifSuccessful: { (json) in
+            self.grossingApps = self.parse(json: json)
+            self.delegate?.grossingAppDataUpdated()
+        }) { (eror) in
+            self.delegate?.failedGettingGrossingApps()
+        }
+    }
+    
+    private func fetch(from url: String,
+                       ifSuccessful successCallback: @escaping (JSON) -> (),
+                       ifFailed failureCallback: @escaping (Error) -> ())
+    {
+        Alamofire.request(url, method: .get)
+            .validate()
+            .responseJSON { response in
+            switch response.result
+            {
+            case .success(let value):
+                successCallback(JSON(value))
+            case .failure(let error):
+                failureCallback(error)
+            }
+        }
+    }
+    
+    private func parse(json: JSON) -> [App]
+    {
+        var apps: [App] = []
         
+        return apps
     }
 }
 
@@ -67,5 +100,3 @@ extension ITunesDataSource: UITableViewDataSource
         return UITableViewCell()
     }
 }
-
-

@@ -205,8 +205,8 @@
 		4CD2B88D204800DD00E21BF4 /* DataAPI */ = {
 			isa = PBXGroup;
 			children = (
-				4CD2B88E2048014E00E21BF4 /* ITunesDataAPI.swift */,
 				4CD2B89520480F0600E21BF4 /* DataAPIProtocol.swift */,
+				4CD2B88E2048014E00E21BF4 /* ITunesDataAPI.swift */,
 			);
 			path = DataAPI;
 			sourceTree = "<group>";

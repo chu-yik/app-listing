@@ -13,4 +13,5 @@ import Foundation
 protocol AppDataSourceDelegate: class
 {
     func grossingAppDataUpdated()
+    func failedGettingGrossingApps()
 }

@@ -12,5 +12,5 @@ import UIKit
 protocol AppDataSourceProtocol: UITableViewDataSource, UICollectionViewDataSource
 {
     weak var delegate: AppDataSourceDelegate? { get set }
-    func fetchData()
+    func fetchGrossingApps()
 }
