@@ -10,15 +10,23 @@ import Foundation
 
 struct ITunesDataAPI
 {
+    private enum url
+    {
+        static let replace = "{size}"
+        static let grossing = "https://itunes.apple.com/hk/rss/topgrossingapplications/limit={size}/json"
+        static let free = "https://itunes.apple.com/hk/rss/topfreeapplications/limit={size}/json"
+        static let search = "https://itunes.apple.com/hk/lookup?id="
+    }
+    
     private(set) var grossingAppSize: Int
     private(set) var freeAppSize: Int
     
     lazy var grossingApp: String = {
-        return ""
+        url.grossing.replacingOccurrences(of: url.replace, with: "\(grossingAppSize)", options: .literal, range: nil)
     }()
     
     lazy var freeApp: String = {
-        return ""
+        url.free.replacingOccurrences(of: url.replace, with: "\(freeAppSize)", options: .literal, range: nil)
     }()
     
     init(grossingAppSize: Int, freeAppSize: Int)
@@ -27,8 +35,16 @@ struct ITunesDataAPI
         self.freeAppSize = freeAppSize
     }
     
-    func urlToSearch(ids: [String]) -> String
+    func urlToSearch(ids: [String]) throws -> String
     {
-        return ""
+        guard !ids.isEmpty else { throw ApiError.invalidIdToSearch }
+        
+        var searchUrl = url.search
+        for id in ids
+        {
+            searchUrl += "\(id),"
+        }
+        searchUrl.removeLast()
+        return searchUrl
     }
 }

@@ -42,12 +42,12 @@ class ITunesDataAPITests: XCTestCase {
     {
         let ids = ["123", "456", "789"]
         let expected = "https://itunes.apple.com/hk/lookup?id=123,456,789"
-        let actual = api.urlToSearch(ids: ids)
+        let actual = try? api.urlToSearch(ids: ids)
         XCTAssertEqual(expected, actual)
     }
     
     func testApiThrowsForInvalidSearch()
     {
-        XCTAssertThrowsError(api.urlToSearch(ids: []))
+        XCTAssertThrowsError(try api.urlToSearch(ids: []))
     }
 }
