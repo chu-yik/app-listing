@@ -16,6 +16,8 @@
 		4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8762047E84900E21BF4 /* UIConfig.swift */; };
 		4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8792047EC5800E21BF4 /* GrossingAppView.swift */; };
 		4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B87C2047F3BA00E21BF4 /* App.swift */; };
+		4CD2B8802047F51800E21BF4 /* ParsingKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */; };
+		4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */; };
 		C6E01A17F7F1DEAD5359FA31 /* Pods_AppListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		4CD2B8762047E84900E21BF4 /* UIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfig.swift; sourceTree = "<group>"; };
 		4CD2B8792047EC5800E21BF4 /* GrossingAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossingAppView.swift; sourceTree = "<group>"; };
 		4CD2B87C2047F3BA00E21BF4 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingKeyProtocol.swift; sourceTree = "<group>"; };
+		4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesRssParsingKey.swift; sourceTree = "<group>"; };
 		58E2944D3A64A4D49534D102 /* Pods-AppListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.debug.xcconfig"; sourceTree = "<group>"; };
 		FB49E8E06271CBF14E7DB8BF /* Pods-AppListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +96,7 @@
 			children = (
 				4CD2B8752047E83500E21BF4 /* Configurations */,
 				4CD2B87B2047F37700E21BF4 /* Models */,
+				4CD2B87E2047F4CD00E21BF4 /* Parsing */,
 				4CD2B8742047E41600E21BF4 /* SupportingFiles */,
 				4CD2B8782047EC3500E21BF4 /* Views */,
 				4CD2B86F2047E3E900E21BF4 /* ViewControllers */,
@@ -150,6 +155,15 @@
 				4CD2B87C2047F3BA00E21BF4 /* App.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4CD2B87E2047F4CD00E21BF4 /* Parsing */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */,
+				4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */,
+			);
+			path = Parsing;
 			sourceTree = "<group>";
 		};
 		5915759B7AEE44A0C9D95844 /* Pods */ = {
@@ -332,7 +346,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */,
+				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
+				4CD2B8802047F51800E21BF4 /* ParsingKeyProtocol.swift in Sources */,
 				4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */,
 				4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */,
 				4CD2B8722047E40B00E21BF4 /* MainViewController.swift in Sources */,
