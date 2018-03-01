@@ -8,9 +8,28 @@
 
 import UIKit
 
-class ITunesDataSource: NSObject, AppDataSourceProtocol
-{
+/// Implementation of the AppDataSourceProtocol, which in term conforms to data source
+/// for both UITableView and UICollectionView
+class ITunesDataSource: NSObject
+{    
+    weak var delegate: AppDataSourceDelegate?
     
+    var grossingApps: [App] = []
+    
+    private var key: ParsingKeyProtocol
+    
+    init(key: ParsingKeyProtocol)
+    {
+        self.key = key
+    }
+}
+
+extension ITunesDataSource: AppDataSourceProtocol
+{
+    func fetchData()
+    {
+        
+    }
 }
 
 extension ITunesDataSource: UICollectionViewDataSource

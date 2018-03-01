@@ -8,6 +8,9 @@
 
 import UIKit
 
+/// Protocol defining the AppDataSource
 protocol AppDataSourceProtocol: UITableViewDataSource, UICollectionViewDataSource
 {
+    weak var delegate: AppDataSourceDelegate? { get set }
+    func fetchData()
 }

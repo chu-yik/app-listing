@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Implementation of ParsingKeyProtocol, keys are specific to ITunes RSS listing
 struct ITunesRssParsingKey: ParsingKeyProtocol
 {
     let dataStart: [String] = ["feed", "entry"]

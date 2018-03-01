@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Protocol for keys used to parse JSON response into App Model Object
 protocol ParsingKeyProtocol
 {
     var dataStart: [String] { get }

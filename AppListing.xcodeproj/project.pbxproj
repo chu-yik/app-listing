@@ -20,6 +20,7 @@
 		4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */; };
 		4CD2B8872047F70C00E21BF4 /* AppDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8862047F70C00E21BF4 /* AppDataSourceProtocol.swift */; };
 		4CD2B8892047F76F00E21BF4 /* ITunesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8882047F76F00E21BF4 /* ITunesDataSource.swift */; };
+		4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B88B2047FB2600E21BF4 /* AppDataSourceDelegate.swift */; };
 		C6E01A17F7F1DEAD5359FA31 /* Pods_AppListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesRssParsingKey.swift; sourceTree = "<group>"; };
 		4CD2B8862047F70C00E21BF4 /* AppDataSourceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSourceProtocol.swift; sourceTree = "<group>"; };
 		4CD2B8882047F76F00E21BF4 /* ITunesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesDataSource.swift; sourceTree = "<group>"; };
+		4CD2B88B2047FB2600E21BF4 /* AppDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDataSourceDelegate.swift; sourceTree = "<group>"; };
 		58E2944D3A64A4D49534D102 /* Pods-AppListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.debug.xcconfig"; sourceTree = "<group>"; };
 		FB49E8E06271CBF14E7DB8BF /* Pods-AppListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,10 +176,19 @@
 		4CD2B8852047F6BE00E21BF4 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				4CD2B88A2047FB1100E21BF4 /* Delegate */,
 				4CD2B8862047F70C00E21BF4 /* AppDataSourceProtocol.swift */,
 				4CD2B8882047F76F00E21BF4 /* ITunesDataSource.swift */,
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		4CD2B88A2047FB1100E21BF4 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B88B2047FB2600E21BF4 /* AppDataSourceDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		5915759B7AEE44A0C9D95844 /* Pods */ = {
@@ -360,6 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */,
+				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
 				4CD2B8892047F76F00E21BF4 /* ITunesDataSource.swift in Sources */,

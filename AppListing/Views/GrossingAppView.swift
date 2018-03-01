@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom container view that holds a UILabel and a UICollectionView to display grossing Apps
 class GrossingAppView: UIView
 {
     private var grossingAppCollectionView: UICollectionView!

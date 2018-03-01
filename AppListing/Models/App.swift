@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Model Object to hold information of an App for listing
 struct App
 {
     let id: String

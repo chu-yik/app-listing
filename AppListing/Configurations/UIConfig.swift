@@ -8,13 +8,15 @@
 
 import UIKit
 
+/// Constants for UI configuration
 enum UIConfig
 {
+    /// configurations specific to the search bar
     enum SearchBar
     {
         static let placeholder = "搜尋"
     }
-    
+    /// configuration specific to the grossing app section
     enum Grossing
     {
         static let sectionHeight: CGFloat = 200.0
