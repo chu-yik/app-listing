@@ -8,7 +8,9 @@
 
 import Foundation
 
-struct ITunesDataAPI
+/// Implementation of the DataAPIProcol, this queries the iTunes API
+/// to get grossing/free App, and search for App by id
+struct ITunesDataAPI: DataAPIProtocol
 {
     private enum url
     {
@@ -18,21 +20,13 @@ struct ITunesDataAPI
         static let search = "https://itunes.apple.com/hk/lookup?id="
     }
     
-    private(set) var grossingAppSize: Int
-    private(set) var freeAppSize: Int
-    
-    lazy var grossingApp: String = {
-        url.grossing.replacingOccurrences(of: url.replace, with: "\(grossingAppSize)", options: .literal, range: nil)
-    }()
-    
-    lazy var freeApp: String = {
-        url.free.replacingOccurrences(of: url.replace, with: "\(freeAppSize)", options: .literal, range: nil)
-    }()
+    private(set) var grossingApp: String
+    private(set) var freeApp: String
     
     init(grossingAppSize: Int, freeAppSize: Int)
     {
-        self.grossingAppSize = grossingAppSize
-        self.freeAppSize = freeAppSize
+        grossingApp = url.grossing.replacingOccurrences(of: url.replace, with: "\(grossingAppSize)", options: .literal, range: nil)
+        freeApp = url.free.replacingOccurrences(of: url.replace, with: "\(freeAppSize)", options: .literal, range: nil)
     }
     
     func urlToSearch(ids: [String]) throws -> String
