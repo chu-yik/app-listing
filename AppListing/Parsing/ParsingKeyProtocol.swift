@@ -6,16 +6,16 @@
 //  Copyright © 2018 MC. All rights reserved.
 //
 
-import Foundation
+import SwiftyJSON
 
 /// Protocol for keys used to parse JSON response into App Model Object
 protocol ParsingKeyProtocol
 {
-    var dataStart: [String] { get }
-    var id: [String] { get }
-    var name: [String] { get }
-    var category: [String] { get }
-    var artist: [String] { get }
-    var summary: [String] { get }
-    var imageUrl: [String] { get }
+    var dataStart: [JSONSubscriptType] { get }
+    var id: [JSONSubscriptType] { get }
+    var name: [JSONSubscriptType] { get }
+    var category: [JSONSubscriptType] { get }
+    var artist: [JSONSubscriptType] { get }
+    var summary: [JSONSubscriptType] { get }
+    var imageUrl: [JSONSubscriptType] { get }
 }

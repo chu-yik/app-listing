@@ -6,16 +6,16 @@
 //  Copyright © 2018 MC. All rights reserved.
 //
 
-import Foundation
+import SwiftyJSON
 
 /// Implementation of ParsingKeyProtocol, keys are specific to ITunes RSS listing
 struct ITunesRssParsingKey: ParsingKeyProtocol
 {
-    let dataStart: [String] = ["feed", "entry"]
-    let id: [String] = ["id", "attributes", "im:id"]
-    let name: [String] = ["im:name", "label"]
-    let category: [String] = ["category", "attributes", "label"]
-    let artist: [String] = ["im:artist", "label"]
-    let summary: [String] = ["summary", "label"]
-    let imageUrl: [String] = ["im:image", "label"]
+    let dataStart: [JSONSubscriptType] = ["feed", "entry"]
+    let id: [JSONSubscriptType] = ["id", "attributes", "im:id"]
+    let name: [JSONSubscriptType] = ["im:name", "label"]
+    let category: [JSONSubscriptType] = ["category", "attributes", "label"]
+    let artist: [JSONSubscriptType] = ["im:artist", "label"]
+    let summary: [JSONSubscriptType] = ["summary", "label"]
+    let imageUrl: [JSONSubscriptType] = ["im:image", 2, "label"]
 }
