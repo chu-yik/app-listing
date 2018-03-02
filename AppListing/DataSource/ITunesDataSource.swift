@@ -204,11 +204,11 @@ extension ITunesDataSource: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
-        
-        cell.index = index + 1
+     
+        let index = indexPath.row
         let id = freeApps[index].id
+        cell.index = index + 1
         if let appWithRating = freeAppsWithRating[id]
         {
             cell.appWithRating = appWithRating
@@ -225,7 +225,7 @@ extension ITunesDataSource: UITableViewDataSource
     
     private func shouldFetchNextPage(currentIndex: Int) -> Bool
     {
-        if currentIndex < freeApps.count - 1
+        if currentIndex + 1 < freeApps.count
         {
             let nextId = freeApps[currentIndex + 1].id
             return !freeAppsWithRating.keys.contains(nextId)

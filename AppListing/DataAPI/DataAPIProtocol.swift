@@ -13,5 +13,5 @@ protocol DataAPIProtocol
     var freeApp: String { get }
     
     /// takes an array of App ids for search, will throw if the array is empty
-    func urlToSearch(ids: [String]) throws-> String
+    func urlToSearch(ids: [String]) throws -> String
 }
