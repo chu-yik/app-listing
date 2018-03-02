@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E422048E6B200B0C161 /* FreeAppCell.swift */; };
 		4C124E452048E6B200B0C161 /* FreeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C124E432048E6B200B0C161 /* FreeAppCell.xib */; };
+		4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */; };
+		4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */; };
+		4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppWithRating.swift */; };
+		4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */; };
 		4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */; };
 		4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8562047E27200E21BF4 /* Assets.xcassets */; };
 		4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8582047E27200E21BF4 /* LaunchScreen.storyboard */; };
@@ -46,6 +50,10 @@
 		2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C124E422048E6B200B0C161 /* FreeAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAppCell.swift; sourceTree = "<group>"; };
 		4C124E432048E6B200B0C161 /* FreeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeAppCell.xib; sourceTree = "<group>"; };
+		4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingDetailKeyProtocol.swift; sourceTree = "<group>"; };
+		4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchParsingDetailKey.swift; sourceTree = "<group>"; };
+		4C124E4A2048F2D300B0C161 /* AppWithRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWithRating.swift; sourceTree = "<group>"; };
+		4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSizeConfig.swift; sourceTree = "<group>"; };
 		4CD2B84C2047E27200E21BF4 /* AppListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD2B8562047E27200E21BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		4CD2B8752047E83500E21BF4 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */,
 				4CD2B8762047E84900E21BF4 /* UIConfig.swift */,
 			);
 			path = Configurations;
@@ -180,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				4CD2B87C2047F3BA00E21BF4 /* App.swift */,
+				4C124E4A2048F2D300B0C161 /* AppWithRating.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,7 +198,9 @@
 			isa = PBXGroup;
 			children = (
 				4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */,
+				4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */,
 				4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */,
+				4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -425,8 +437,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */,
+				4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */,
+				4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */,
 				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
+				4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */,
 				4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */,
 				4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
@@ -435,6 +450,7 @@
 				4CD2B8802047F51800E21BF4 /* ParsingKeyProtocol.swift in Sources */,
 				4CD2B8872047F70C00E21BF4 /* AppDataSourceProtocol.swift in Sources */,
 				4CD2B88F2048014E00E21BF4 /* ITunesDataAPI.swift in Sources */,
+				4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */,
 				4CD2B89620480F0600E21BF4 /* DataAPIProtocol.swift in Sources */,
 				4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */,
 				4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */,

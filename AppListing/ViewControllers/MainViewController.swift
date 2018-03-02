@@ -50,7 +50,8 @@ class MainViewController: UIViewController
     
     private func createDataSource()
     {
-        let api = ITunesDataAPI(grossingAppSize: 10, freeAppSize: 30)
+        let api = ITunesDataAPI(grossingAppSize: DataSizeConfig.grossing,
+                                freeAppSize: DataSizeConfig.free)
         let key = ITunesRssParsingKey()
         dataSource = ITunesDataSource(api: api, key: key)
         dataSource.delegate = self
