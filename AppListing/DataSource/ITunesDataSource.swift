@@ -60,7 +60,17 @@ extension ITunesDataSource: AppDataSourceProtocol
     private func parse(json: JSON) -> [App]
     {
         var apps: [App] = []
-        
+        let entries = json[key.dataStart].arrayValue
+        for entry in entries
+        {
+            let app = App(id: entry[key.id].stringValue,
+                          name: entry[key.name].stringValue,
+                          category: entry[key.category].stringValue,
+                          artist: entry[key.artist].stringValue,
+                          summary: entry[key.summary].stringValue,
+                          imageUrl: entry[key.imageUrl].stringValue)
+            apps.append(app)
+        }
         return apps
     }
 }
@@ -74,13 +84,14 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return 0
+        return grossingApps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        // TODO:
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.identifier, for: indexPath) as! GrossingAppCell
+        cell.app = grossingApps[indexPath.row]
+        return cell
     }
 }
 

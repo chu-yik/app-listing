@@ -25,6 +25,22 @@ class GrossingAppView: UIView
         fatalError("init(coder:) has not been implemented")
     }
     
+    func connectDataSource(dataSource: AppDataSourceProtocol)
+    {
+        grossingAppCollectionView.dataSource = dataSource
+    }
+    
+    func registerGrossingAppCell()
+    {
+        let nib = UINib(nibName: GrossingAppCell.identifier, bundle: nil)
+        grossingAppCollectionView.register(nib, forCellWithReuseIdentifier: GrossingAppCell.identifier)
+    }
+    
+    func reload()
+    {
+        grossingAppCollectionView.reloadData()
+    }
+    
     private func addHeaderLabel()
     {
         let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: UIConfig.Grossing.labelHeight)
@@ -44,6 +60,7 @@ class GrossingAppView: UIView
         grossingAppCollectionView.isSpringLoaded = true
         grossingAppCollectionView.allowsSelection = false
         grossingAppCollectionView.showsHorizontalScrollIndicator = false
+        grossingAppCollectionView.delegate = self
         
         addSubview(grossingAppCollectionView)
         addCollectionViewConstraints()
@@ -57,5 +74,13 @@ class GrossingAppView: UIView
         let bottom = NSLayoutConstraint(item: grossingAppCollectionView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0)
         let fixHeight = NSLayoutConstraint(item: grossingAppCollectionView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: UIConfig.Grossing.cellHeight)
         self.addConstraints([leading, trailing, bottom, fixHeight])
+    }
+}
+
+extension GrossingAppView: UICollectionViewDelegateFlowLayout
+{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIConfig.Grossing.cellWidth,
+                      height: UIConfig.Grossing.cellHeight)
     }
 }

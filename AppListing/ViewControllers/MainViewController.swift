@@ -14,12 +14,17 @@ class MainViewController: UIViewController
     @IBOutlet weak var freeAppTableView: UITableView!
     
     private var grossingAppView: GrossingAppView! = nil
+    private var dataSource: AppDataSourceProtocol! = nil
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         customiseSearchBar()
-        createGrossingAppView()
+        
+        createDataSource()
+        
+        createGrossingAppViewAsHeader()
     }
 
     override func didReceiveMemoryWarning()
@@ -32,11 +37,22 @@ class MainViewController: UIViewController
         return true
     }
     
-    private func createGrossingAppView()
+    private func createGrossingAppViewAsHeader()
     {
         let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConfig.Grossing.sectionHeight)
         grossingAppView = GrossingAppView(frame: frame)
+        grossingAppView.connectDataSource(dataSource: dataSource)
+        grossingAppView.registerGrossingAppCell()
         freeAppTableView.tableHeaderView = grossingAppView
+    }
+    
+    private func createDataSource()
+    {
+        let api = ITunesDataAPI(grossingAppSize: 10, freeAppSize: 100)
+        let key = ITunesRssParsingKey()
+        dataSource = ITunesDataSource(api: api, key: key)
+        dataSource.delegate = self
+        dataSource.fetchGrossingApps()
     }
 }
 
@@ -46,5 +62,19 @@ extension MainViewController
     private func customiseSearchBar()
     {
         searchBar.placeholder = UIConfig.SearchBar.placeholder
+    }
+}
+
+extension MainViewController: AppDataSourceDelegate
+{
+    func grossingAppDataUpdated()
+    {
+        print("data available - refresh grossing app section")
+        grossingAppView.reload()
+    }
+    
+    func failedGettingGrossingApps()
+    {
+        print("failed getting grossing apps")
     }
 }

@@ -20,6 +20,7 @@ enum UIConfig
     enum Grossing
     {
         static let sectionHeight: CGFloat = 200.0
+        static let cellWidth: CGFloat = 90.0
         static let cellHeight: CGFloat = 170.0
         static let labelHeight: CGFloat = 30.0
         static let labelTitle = "推介"
