@@ -11,6 +11,7 @@ import UIKit
 /// Custom container view that holds a UILabel and a UICollectionView to display grossing Apps
 class GrossingAppView: UIView
 {
+    private var headerLabel: UILabel!
     private var grossingAppCollectionView: UICollectionView!
     
     private lazy var flowLayout: UICollectionViewFlowLayout = {
@@ -52,11 +53,21 @@ class GrossingAppView: UIView
     
     private func addHeaderLabel()
     {
-        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: UIConfig.Grossing.labelHeight)
-        let headerLabel = UILabel(frame: frame)
+        headerLabel = UILabel(frame: CGRect.zero)
         headerLabel.text = UIConfig.Grossing.labelTitle
         headerLabel.font = UIConfig.Grossing.labelFont
         addSubview(headerLabel)
+        addHeaderLabelConstraints()
+    }
+    
+    private func addHeaderLabelConstraints()
+    {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        let leading = NSLayoutConstraint(item: headerLabel, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: UIConfig.Grossing.spacing)
+        let trailing = NSLayoutConstraint(item: headerLabel, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: -UIConfig.Grossing.spacing)
+        let top = NSLayoutConstraint(item: headerLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0)
+        let fixHeight = NSLayoutConstraint(item: headerLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: UIConfig.Grossing.labelHeight)
+        self.addConstraints([leading, trailing, top, fixHeight])
     }
     
     private func addCollectionView()
