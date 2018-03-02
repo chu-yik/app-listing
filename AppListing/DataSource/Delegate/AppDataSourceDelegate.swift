@@ -14,4 +14,7 @@ protocol AppDataSourceDelegate: class
 {
     func grossingAppDataUpdated()
     func failedGettingGrossingApps()
+    
+    func freeAppDataUpdated()
+    func failedGettingFreeApps()
 }

@@ -25,6 +25,8 @@ class MainViewController: UIViewController
         createDataSource()
         
         createGrossingAppViewAsHeader()
+        
+        connectFreeAppView()
     }
 
     override func didReceiveMemoryWarning()
@@ -48,11 +50,20 @@ class MainViewController: UIViewController
     
     private func createDataSource()
     {
-        let api = ITunesDataAPI(grossingAppSize: 10, freeAppSize: 100)
+        let api = ITunesDataAPI(grossingAppSize: 10, freeAppSize: 30)
         let key = ITunesRssParsingKey()
         dataSource = ITunesDataSource(api: api, key: key)
         dataSource.delegate = self
         dataSource.fetchGrossingApps()
+        dataSource.fetchFreeApps()
+    }
+    
+    private func connectFreeAppView()
+    {
+        let nib = UINib(nibName: FreeAppCell.identifier, bundle: nil)
+        freeAppTableView.register(nib, forCellReuseIdentifier: FreeAppCell.identifier)
+        freeAppTableView.dataSource = dataSource
+        freeAppTableView.delegate = self
     }
 }
 
@@ -65,6 +76,16 @@ extension MainViewController
     }
 }
 
+// MARK: - Conforming UITableViewDelegate
+extension MainViewController: UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UIConfig.Free.cellHeight
+    }
+}
+
+// MARK: - Conforming AppDataSourceDelegate
 extension MainViewController: AppDataSourceDelegate
 {
     func grossingAppDataUpdated()
@@ -74,6 +95,17 @@ extension MainViewController: AppDataSourceDelegate
     }
     
     func failedGettingGrossingApps()
+    {
+        print("failed getting grossing apps")
+    }
+    
+    func freeAppDataUpdated()
+    {
+        print("data available - refresh free app table")
+        freeAppTableView.reloadData()
+    }
+    
+    func failedGettingFreeApps()
     {
         print("failed getting grossing apps")
     }

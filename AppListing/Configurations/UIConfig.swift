@@ -29,6 +29,10 @@ enum UIConfig
         static let borderWidth: CGFloat = 0.2
         static let borderColor = UIColor.gray.cgColor
         static let spacing: CGFloat = 15.0
-        
+    }
+    /// configuration specific to the free app section
+    enum Free
+    {
+        static let cellHeight: CGFloat = 100.0
     }
 }

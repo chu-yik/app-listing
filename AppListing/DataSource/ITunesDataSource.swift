@@ -17,6 +17,7 @@ class ITunesDataSource: NSObject
     weak var delegate: AppDataSourceDelegate?
     
     var grossingApps: [App] = []
+    var freeApps: [App] = []
     
     private var api: DataAPIProtocol
     private var key: ParsingKeyProtocol
@@ -37,6 +38,16 @@ extension ITunesDataSource: AppDataSourceProtocol
             self.delegate?.grossingAppDataUpdated()
         }) { (eror) in
             self.delegate?.failedGettingGrossingApps()
+        }
+    }
+    
+    func fetchFreeApps()
+    {
+        fetch(from: api.freeApp, ifSuccessful: { (json) in
+            self.freeApps = self.parse(json: json)
+            self.delegate?.freeAppDataUpdated()
+        }) { (eror) in
+            self.delegate?.failedGettingFreeApps()
         }
     }
     
@@ -97,17 +108,21 @@ extension ITunesDataSource: UICollectionViewDataSource
 
 extension ITunesDataSource: UITableViewDataSource
 {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return freeApps.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO:
-        return UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
+        cell.index = indexPath.row + 1
+        cell.app = freeApps[indexPath.row]
+        return cell
     }
 }

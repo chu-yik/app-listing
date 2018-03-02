@@ -13,4 +13,5 @@ protocol AppDataSourceProtocol: UITableViewDataSource, UICollectionViewDataSourc
 {
     weak var delegate: AppDataSourceDelegate? { get set }
     func fetchGrossingApps()
+    func fetchFreeApps()
 }
