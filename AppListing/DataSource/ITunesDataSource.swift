@@ -35,6 +35,23 @@ class ITunesDataSource: NSObject
     }
 }
 
+// MARK: - private helpers - searching related
+extension ITunesDataSource
+{
+    private func searchFor(str: String, inApp app: App) -> Bool
+    {
+        return app.name.lowercased().contains(str)
+            || app.category.lowercased().contains(str)
+            || app.artist.lowercased().contains(str)
+            || app.summary.lowercased().contains(str)
+    }
+    
+    private func shouldUseSearchResult() -> Bool
+    {
+        return delegate?.isSearching() ?? false
+    }
+}
+
 extension ITunesDataSource: AppDataSourceProtocol
 {
     func fetchGrossingApps()
@@ -60,9 +77,7 @@ extension ITunesDataSource: AppDataSourceProtocol
     
     func filterData(withSearch search: String)
     {
-        grossingAppsFiltered = grossingApps.filter { (app) -> Bool in
-            return app.name.lowercased().contains(search) || app.category.lowercased().contains(search) || app.artist.lowercased().contains(search) || app.summary.lowercased().contains(search)
-        }
+        grossingAppsFiltered = grossingApps.filter { searchFor(str: search, inApp: $0) }
         print("search \(search) found \(grossingAppsFiltered.count) results in grossing App")
         self.delegate?.grossingAppDataUpdated()
     }
@@ -189,27 +204,13 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        if delegate?.isSearching() ?? false
-        {
-            return grossingAppsFiltered.count
-        }
-        else
-        {
-            return grossingApps.count
-        }
+        return shouldUseSearchResult() ? grossingAppsFiltered.count : grossingApps.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.identifier, for: indexPath) as! GrossingAppCell
-        if delegate?.isSearching() ?? false
-        {
-            cell.app = grossingAppsFiltered[indexPath.row]
-        }
-        else
-        {
-            cell.app = grossingApps[indexPath.row]
-        }
+        cell.app = shouldUseSearchResult() ? grossingAppsFiltered[indexPath.row] : grossingApps[indexPath.row]
         return cell
     }
 }
