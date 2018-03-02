@@ -13,6 +13,15 @@ class GrossingAppView: UIView
 {
     private var grossingAppCollectionView: UICollectionView!
     
+    private lazy var flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: UIConfig.Grossing.spacing,
+                                           bottom: 0, right: UIConfig.Grossing.spacing)
+        layout.minimumLineSpacing = UIConfig.Grossing.spacing
+        return layout
+    }()
+    
     override init(frame: CGRect)
     {
         super.init(frame: frame)
@@ -52,11 +61,8 @@ class GrossingAppView: UIView
     
     private func addCollectionView()
     {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        grossingAppCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        grossingAppCollectionView.backgroundColor = .green
+        grossingAppCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: flowLayout)
+        grossingAppCollectionView.backgroundColor = .white
         grossingAppCollectionView.isSpringLoaded = true
         grossingAppCollectionView.allowsSelection = false
         grossingAppCollectionView.showsHorizontalScrollIndicator = false

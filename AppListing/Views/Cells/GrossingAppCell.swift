@@ -21,7 +21,7 @@ class GrossingAppCell: UICollectionViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        // Initialization code
+        configureImageView()
     }
     
     var app: App? {
@@ -47,9 +47,9 @@ class GrossingAppCell: UICollectionViewCell
     private func configureImageView()
     {
         appImageView.contentMode = .scaleAspectFit
-        appImageView.layer.cornerRadius = 90.0 / 4
-        appImageView.layer.borderWidth = 0.2
-        appImageView.layer.borderColor = UIColor.gray.cgColor
+        appImageView.layer.cornerRadius = UIConfig.Grossing.cornerRadius
+        appImageView.layer.borderWidth = UIConfig.Grossing.borderWidth
+        appImageView.layer.borderColor = UIConfig.Grossing.borderColor
         appImageView.clipsToBounds = true
     }
 }
