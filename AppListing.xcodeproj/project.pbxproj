@@ -25,6 +25,8 @@
 		4CD2B891204804CC00E21BF4 /* ITunesDataAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B890204804CC00E21BF4 /* ITunesDataAPITests.swift */; };
 		4CD2B89420480CBF00E21BF4 /* ApiErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B89320480CBF00E21BF4 /* ApiErrors.swift */; };
 		4CD2B89620480F0600E21BF4 /* DataAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B89520480F0600E21BF4 /* DataAPIProtocol.swift */; };
+		4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8982048227000E21BF4 /* GrossingAppCell.swift */; };
+		4CD2B89B2048227000E21BF4 /* GrossingAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8992048227000E21BF4 /* GrossingAppCell.xib */; };
 		C6E01A17F7F1DEAD5359FA31 /* Pods_AppListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		4CD2B890204804CC00E21BF4 /* ITunesDataAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesDataAPITests.swift; sourceTree = "<group>"; };
 		4CD2B89320480CBF00E21BF4 /* ApiErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiErrors.swift; sourceTree = "<group>"; };
 		4CD2B89520480F0600E21BF4 /* DataAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAPIProtocol.swift; sourceTree = "<group>"; };
+		4CD2B8982048227000E21BF4 /* GrossingAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrossingAppCell.swift; sourceTree = "<group>"; };
+		4CD2B8992048227000E21BF4 /* GrossingAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GrossingAppCell.xib; sourceTree = "<group>"; };
 		58E2944D3A64A4D49534D102 /* Pods-AppListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.debug.xcconfig"; sourceTree = "<group>"; };
 		FB49E8E06271CBF14E7DB8BF /* Pods-AppListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppListing/Pods-AppListing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +166,7 @@
 		4CD2B8782047EC3500E21BF4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CD2B8972048223D00E21BF4 /* Cells */,
 				4CD2B8792047EC5800E21BF4 /* GrossingAppView.swift */,
 			);
 			path = Views;
@@ -217,6 +222,15 @@
 				4CD2B89320480CBF00E21BF4 /* ApiErrors.swift */,
 			);
 			path = Errors;
+			sourceTree = "<group>";
+		};
+		4CD2B8972048223D00E21BF4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B8982048227000E21BF4 /* GrossingAppCell.swift */,
+				4CD2B8992048227000E21BF4 /* GrossingAppCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5915759B7AEE44A0C9D95844 /* Pods */ = {
@@ -323,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */,
+				4CD2B89B2048227000E21BF4 /* GrossingAppCell.xib in Resources */,
 				4CD2B8732047E40B00E21BF4 /* MainViewController.xib in Resources */,
 				4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */,
 			);
@@ -401,6 +416,7 @@
 				4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */,
 				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
+				4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
 				4CD2B89420480CBF00E21BF4 /* ApiErrors.swift in Sources */,
 				4CD2B8892047F76F00E21BF4 /* ITunesDataSource.swift in Sources */,
