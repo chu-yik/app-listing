@@ -70,11 +70,39 @@ class MainViewController: UIViewController
 }
 
 // MARK: - Search Bar
-extension MainViewController
+extension MainViewController: UISearchBarDelegate
 {
     private func customiseSearchBar()
     {
         searchBar.placeholder = UIConfig.SearchBar.placeholder
+        searchBar.delegate = self
+        searchBar.returnKeyType = .done
+        searchBar.autocorrectionType = .no
+    }
+    
+    private func hideSearchBarKeyBoard()
+    {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
+        hideSearchBarKeyBoard()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        hideSearchBarKeyBoard()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
     }
 }
 
