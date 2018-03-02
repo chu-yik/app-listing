@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E422048E6B200B0C161 /* FreeAppCell.swift */; };
+		4C124E452048E6B200B0C161 /* FreeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C124E432048E6B200B0C161 /* FreeAppCell.xib */; };
 		4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */; };
 		4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8562047E27200E21BF4 /* Assets.xcassets */; };
 		4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8582047E27200E21BF4 /* LaunchScreen.storyboard */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C124E422048E6B200B0C161 /* FreeAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAppCell.swift; sourceTree = "<group>"; };
+		4C124E432048E6B200B0C161 /* FreeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeAppCell.xib; sourceTree = "<group>"; };
 		4CD2B84C2047E27200E21BF4 /* AppListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD2B8562047E27200E21BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 			children = (
 				4CD2B8982048227000E21BF4 /* GrossingAppCell.swift */,
 				4CD2B8992048227000E21BF4 /* GrossingAppCell.xib */,
+				4C124E422048E6B200B0C161 /* FreeAppCell.swift */,
+				4C124E432048E6B200B0C161 /* FreeAppCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -336,6 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C124E452048E6B200B0C161 /* FreeAppCell.xib in Resources */,
 				4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */,
 				4CD2B89B2048227000E21BF4 /* GrossingAppCell.xib in Resources */,
 				4CD2B8732047E40B00E21BF4 /* MainViewController.xib in Resources */,
@@ -419,6 +426,7 @@
 				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
 				4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */,
+				4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
 				4CD2B89420480CBF00E21BF4 /* ApiErrors.swift in Sources */,
 				4CD2B8892047F76F00E21BF4 /* ITunesDataSource.swift in Sources */,
