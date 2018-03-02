@@ -9,6 +9,7 @@
 import UIKit
 import Cosmos
 
+/// Cell for displaying Free App with rating info
 class FreeAppCell: UITableViewCell
 {
     static let identifier = "FreeAppCell"
@@ -34,14 +35,15 @@ class FreeAppCell: UITableViewCell
         }
     }
     
-    var app: App? {
+    var appWithRating: AppWithRating? {
         didSet {
-            if let app = app
+            if let appWithRating = appWithRating
             {
-                nameLabel.text = app.name
-                categoryLabel.text = app.category
-                updateImageFrom(app.imageUrl)
-                // TODO: ratings
+                nameLabel.text = appWithRating.app.name
+                categoryLabel.text = appWithRating.app.category
+                updateImageFrom(appWithRating.app.imageUrl)
+                update(averageRating: appWithRating.rating,
+                       ratingCount: appWithRating.count)
             }
         }
     }
@@ -60,5 +62,11 @@ class FreeAppCell: UITableViewCell
         appImageView.contentMode = .scaleAspectFit
         // TODO: round or circle clipping here
         appImageView.clipsToBounds = true
+    }
+    
+    private func update(averageRating: Double, ratingCount: String)
+    {
+        ratingView.rating = averageRating
+        ratingView.text = "(\(ratingCount))"
     }
 }
