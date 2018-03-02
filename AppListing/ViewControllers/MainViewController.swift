@@ -53,7 +53,8 @@ class MainViewController: UIViewController
         let api = ITunesDataAPI(grossingAppSize: DataSizeConfig.grossing,
                                 freeAppSize: DataSizeConfig.free)
         let key = ITunesRssParsingKey()
-        dataSource = ITunesDataSource(api: api, key: key)
+        let detailKey = ITunesSearchParsingDetailKey()
+        dataSource = ITunesDataSource(api: api, key: key, detailKey: detailKey)
         dataSource.delegate = self
         dataSource.fetchGrossingApps()
         dataSource.fetchFreeApps()
