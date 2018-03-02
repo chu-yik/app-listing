@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 /// Cell for displaying Grossing App
 class GrossingAppCell: UICollectionViewCell
@@ -38,6 +39,8 @@ class GrossingAppCell: UICollectionViewCell
     {
         if let url = URL(string: imageUrl)
         {
+            appImageView.kf.indicatorType = .activity
+            appImageView.kf.setImage(with: url)
         }
     }
     
