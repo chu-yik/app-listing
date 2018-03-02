@@ -5,4 +5,5 @@ use_frameworks!
 target 'AppListing' do
     pod 'Alamofire', '~> 4.6'
     pod 'SwiftyJSON', '~> 4.0.0'
+    pod 'Kingfisher', '~> 4.0'
 end
