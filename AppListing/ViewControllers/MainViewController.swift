@@ -15,6 +15,7 @@ class MainViewController: UIViewController
     
     private var grossingAppView: GrossingAppView! = nil
     private var dataSource: AppDataSourceProtocol! = nil
+    private var currentSearch: String? = nil
     
     override func viewDidLoad()
     {
@@ -103,6 +104,26 @@ extension MainViewController: UISearchBarDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
+        let newSearch = searchText.trimmingCharacters(in: .whitespaces).lowercased()
+        
+        guard newSearch != currentSearch else
+        {
+            return
+        }
+    
+        guard newSearch.count > 0 else
+        {
+            if currentSearch != nil
+            {
+                currentSearch = nil
+                grossingAppView.reload()
+                freeAppTableView.reloadData()
+            }
+            return
+        }
+        
+        currentSearch = newSearch
+        dataSource.filterData(withSearch: newSearch)
     }
 }
 
@@ -138,5 +159,10 @@ extension MainViewController: AppDataSourceDelegate
     func failedGettingFreeApps()
     {
         print("failed getting grossing apps")
+    }
+    
+    func isSearching() -> Bool
+    {
+        return currentSearch != nil
     }
 }

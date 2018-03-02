@@ -17,4 +17,6 @@ protocol AppDataSourceDelegate: class
     
     func freeAppDataUpdated()
     func failedGettingFreeApps()
+    
+    func isSearching() -> Bool
 }

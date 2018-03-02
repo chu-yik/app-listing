@@ -17,6 +17,7 @@ class ITunesDataSource: NSObject
     weak var delegate: AppDataSourceDelegate?
     
     var grossingApps: [App] = []
+    var grossingAppsFiltered: [App] = []
     var freeApps: [App] = []
     
     var freeAppIndexMap: [String: Int] = [:]
@@ -55,6 +56,15 @@ extension ITunesDataSource: AppDataSourceProtocol
         }) { (eror) in
             self.delegate?.failedGettingFreeApps()
         }
+    }
+    
+    func filterData(withSearch search: String)
+    {
+        grossingAppsFiltered = grossingApps.filter { (app) -> Bool in
+            return app.name.lowercased().contains(search) || app.category.lowercased().contains(search) || app.artist.lowercased().contains(search) || app.summary.lowercased().contains(search)
+        }
+        print("search \(search) found \(grossingAppsFiltered.count) results in grossing App")
+        self.delegate?.grossingAppDataUpdated()
     }
     
     private func createFreeAppIndexMapping()
@@ -179,13 +189,27 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return grossingApps.count
+        if delegate?.isSearching() ?? false
+        {
+            return grossingAppsFiltered.count
+        }
+        else
+        {
+            return grossingApps.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.identifier, for: indexPath) as! GrossingAppCell
-        cell.app = grossingApps[indexPath.row]
+        if delegate?.isSearching() ?? false
+        {
+            cell.app = grossingAppsFiltered[indexPath.row]
+        }
+        else
+        {
+            cell.app = grossingApps[indexPath.row]
+        }
         return cell
     }
 }

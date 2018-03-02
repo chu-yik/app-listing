@@ -14,4 +14,7 @@ protocol AppDataSourceProtocol: UITableViewDataSource, UICollectionViewDataSourc
     weak var delegate: AppDataSourceDelegate? { get set }
     func fetchGrossingApps()
     func fetchFreeApps()
+    /// filter the data source with given search string, search is case insensitive
+    /// it will be up to the caller to decide if leading/trailing whitespaces shall be trimmed
+    func filterData(withSearch: String)
 }
