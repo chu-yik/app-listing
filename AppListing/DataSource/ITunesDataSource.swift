@@ -80,6 +80,7 @@ extension ITunesDataSource: AppDataSourceProtocol
     
     func fetchFreeApps()
     {
+        delegate?.isLoadingFreeApp(true)
         fetch(from: api.freeApp, ifSuccessful: { (json) in
             self.freeApps = self.parse(json: json)
             self.createFreeAppIndexMapping()
@@ -132,6 +133,7 @@ extension ITunesDataSource: AppDataSourceProtocol
     {
         do
         {
+            delegate?.isLoadingFreeApp(true)
             let ids = appIdsToSearch(fromIndex: fromIndex)
             let url = try api.urlToSearch(ids: ids)
             fetch(from: url, ifSuccessful: { (json) in

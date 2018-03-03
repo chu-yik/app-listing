@@ -173,16 +173,19 @@ extension MainViewController: AppDataSourceDelegate
     
     func freeAppDataUpdated()
     {
+        showLoadingFreeAppIndicator(false)
         freeAppTableView.reloadData()
     }
     
     func failedGettingFreeApps()
     {
+        showLoadingFreeAppIndicator(false)
         print("failed getting free apps")
     }
     
     func failedGettingFreeAppsRatings()
     {
+        showLoadingFreeAppIndicator(false)
         print("failed getting ratings for free apps")
     }
     
@@ -194,5 +197,10 @@ extension MainViewController: AppDataSourceDelegate
     func grossingAppSizeUpdated(size: Int)
     {
         grossingAppView.showEmptyMessage(size == 0)
+    }
+    
+    func isLoadingFreeApp(_ loading: Bool)
+    {
+        showLoadingFreeAppIndicator(loading)
     }
 }

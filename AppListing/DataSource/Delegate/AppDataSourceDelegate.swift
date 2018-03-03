@@ -21,4 +21,5 @@ protocol AppDataSourceDelegate: class
     
     func isSearching() -> Bool
     func grossingAppSizeUpdated(size: Int)
+    func isLoadingFreeApp(_ loading: Bool)
 }
