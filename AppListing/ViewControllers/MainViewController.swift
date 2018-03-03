@@ -141,7 +141,6 @@ extension MainViewController: AppDataSourceDelegate
 {
     func grossingAppDataUpdated()
     {
-        print("data available - refresh grossing app section")
         grossingAppView.reload()
     }
     
@@ -152,13 +151,17 @@ extension MainViewController: AppDataSourceDelegate
     
     func freeAppDataUpdated()
     {
-        print("data available - refresh free app table")
         freeAppTableView.reloadData()
     }
     
     func failedGettingFreeApps()
     {
-        print("failed getting grossing apps")
+        print("failed getting free apps")
+    }
+    
+    func failedGettingFreeAppsRatings()
+    {
+        print("failed getting ratings for free apps")
     }
     
     func isSearching() -> Bool

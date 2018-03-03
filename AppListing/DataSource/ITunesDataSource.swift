@@ -144,13 +144,12 @@ extension ITunesDataSource: AppDataSourceProtocol
                 print("total app with ratings now: \(self.freeAppsWithRating.count)")
                 self.delegate?.freeAppDataUpdated()
             }, ifFailed: { (error) in
-                self.delegate?.failedGettingFreeApps()
+                self.delegate?.failedGettingFreeAppsRatings()
             })
         }
         catch
         {
-            // TODO: different call back for rating fetch?
-            delegate?.failedGettingFreeApps()
+            delegate?.failedGettingFreeAppsRatings()
         }
     }
     
@@ -204,11 +203,6 @@ extension ITunesDataSource: AppDataSourceProtocol
                                                   rating: rating,
                                                   count: count)
                 appsWithRating.append(appWithRating)
-            }
-            else
-            {
-                // TODO: handle this
-                print("Error: cannot find index from mapping, id: \(id)")
             }
         }
         return appsWithRating
