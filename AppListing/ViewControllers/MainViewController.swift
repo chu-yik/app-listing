@@ -28,6 +28,8 @@ class MainViewController: UIViewController
         createGrossingAppViewAsHeader()
         
         connectFreeAppView()
+        
+        createLoadingFreeAppIndicator()
     }
 
     override func didReceiveMemoryWarning()
@@ -127,6 +129,26 @@ extension MainViewController: UISearchBarDelegate
     }
 }
 
+// MARK: - loading indicator
+extension MainViewController
+{
+    private func createLoadingFreeAppIndicator()
+    {
+        let frame = CGRect(x: 0, y: 0,
+                           width: freeAppTableView.bounds.width,
+                           height: UIConfig.LoadingIndicator.height)
+        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicatorView.frame = frame
+        indicatorView.startAnimating()
+        freeAppTableView.tableFooterView = indicatorView
+    }
+    
+    func showLoadingFreeAppIndicator(_ show: Bool)
+    {
+        freeAppTableView.tableFooterView?.isHidden = !show
+    }
+}
+
 // MARK: - Conforming UITableViewDelegate
 extension MainViewController: UITableViewDelegate
 {
@@ -151,16 +173,19 @@ extension MainViewController: AppDataSourceDelegate
     
     func freeAppDataUpdated()
     {
+        showLoadingFreeAppIndicator(false)
         freeAppTableView.reloadData()
     }
     
     func failedGettingFreeApps()
     {
+        showLoadingFreeAppIndicator(false)
         print("failed getting free apps")
     }
     
     func failedGettingFreeAppsRatings()
     {
+        showLoadingFreeAppIndicator(false)
         print("failed getting ratings for free apps")
     }
     
@@ -172,5 +197,10 @@ extension MainViewController: AppDataSourceDelegate
     func grossingAppSizeUpdated(size: Int)
     {
         grossingAppView.showEmptyMessage(size == 0)
+    }
+    
+    func isLoadingFreeApp(_ loading: Bool)
+    {
+        showLoadingFreeAppIndicator(loading)
     }
 }
