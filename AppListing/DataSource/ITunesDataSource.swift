@@ -86,7 +86,7 @@ extension ITunesDataSource: AppDataSourceProtocol
         fetch(from: api.freeApp, ifSuccessful: { (json) in
             self.freeApps = self.parse(json: json)
             self.createFreeAppIndexMapping()
-            self.fetchRating(fromIndex: 0)
+            self.fetchRating()
         }) { (eror) in
             self.delegate?.failedGettingFreeApps()
         }
@@ -112,10 +112,10 @@ extension ITunesDataSource: AppDataSourceProtocol
         }
     }
     
-    private func appIdsToSearch(fromIndex: Int) -> [String]
+    private func appIdsToSearch() -> [String]
     {
         var ids: [String] = []
-        var index = fromIndex
+        var index = 0
         
         let target = targetFreeAppList()
         while ids.count < DataSizeConfig.pageSize
@@ -131,12 +131,12 @@ extension ITunesDataSource: AppDataSourceProtocol
         return ids
     }
     
-    private func fetchRating(fromIndex: Int)
+    private func fetchRating()
     {
         do
         {
             delegate?.isLoadingFreeApp(true)
-            let ids = appIdsToSearch(fromIndex: fromIndex)
+            let ids = appIdsToSearch()
             let url = try api.urlToSearch(ids: ids)
             fetchingInProgress = true
             fetch(from: url, ifSuccessful: { (json) in
@@ -262,11 +262,16 @@ extension ITunesDataSource: UITableViewDataSource
         {
             cell.appWithRating = appWithRating
         }
+        else
+        {
+            print("missing rating at index \(index)")
+            fetchRating()
+        }
         
         if shouldFetchNextPage(currentIndex: index)
         {
             print("fetching more ratings ... current index \(index)")
-            fetchRating(fromIndex: index + 1)
+            fetchRating()
         }
         
         return cell
