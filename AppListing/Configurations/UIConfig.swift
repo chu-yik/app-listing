@@ -45,4 +45,9 @@ enum UIConfig
         static let labelFont = UIFont.boldSystemFont(ofSize: 20)
         static let labelColor = UIColor.gray
     }
+    /// configuration for loading indicator
+    enum LoadingIndicator
+    {
+        static let height: CGFloat = 30.0
+    }
 }

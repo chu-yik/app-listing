@@ -28,6 +28,8 @@ class MainViewController: UIViewController
         createGrossingAppViewAsHeader()
         
         connectFreeAppView()
+        
+        createLoadingFreeAppIndicator()
     }
 
     override func didReceiveMemoryWarning()
@@ -124,6 +126,26 @@ extension MainViewController: UISearchBarDelegate
         
         currentSearch = newSearch
         dataSource.filterData(withSearch: newSearch)
+    }
+}
+
+// MARK: - loading indicator
+extension MainViewController
+{
+    private func createLoadingFreeAppIndicator()
+    {
+        let frame = CGRect(x: 0, y: 0,
+                           width: freeAppTableView.bounds.width,
+                           height: UIConfig.LoadingIndicator.height)
+        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        indicatorView.frame = frame
+        indicatorView.startAnimating()
+        freeAppTableView.tableFooterView = indicatorView
+    }
+    
+    func showLoadingFreeAppIndicator(_ show: Bool)
+    {
+        freeAppTableView.tableFooterView?.isHidden = !show
     }
 }
 
