@@ -38,4 +38,11 @@ enum UIConfig
         static let borderWidth: CGFloat = 0.2
         static let borderColor = UIColor.gray.cgColor
     }
+    /// configuration for displaying empty message
+    enum EmptyMessage
+    {
+        static let labelText = "沒有可顯示項目"
+        static let labelFont = UIFont.boldSystemFont(ofSize: 20)
+        static let labelColor = UIColor.gray
+    }
 }
