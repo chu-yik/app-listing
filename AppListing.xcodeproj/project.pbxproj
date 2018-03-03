@@ -13,6 +13,7 @@
 		4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */; };
 		4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppWithRating.swift */; };
 		4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */; };
+		4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9C204A453000A2078C /* AppIconCropping.swift */; };
 		4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */; };
 		4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8562047E27200E21BF4 /* Assets.xcassets */; };
 		4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8582047E27200E21BF4 /* LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 		4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchParsingDetailKey.swift; sourceTree = "<group>"; };
 		4C124E4A2048F2D300B0C161 /* AppWithRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWithRating.swift; sourceTree = "<group>"; };
 		4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSizeConfig.swift; sourceTree = "<group>"; };
+		4CAEAB9C204A453000A2078C /* AppIconCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCropping.swift; sourceTree = "<group>"; };
 		4CD2B84C2047E27200E21BF4 /* AppListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD2B8562047E27200E21BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */,
 				4CD2B8762047E84900E21BF4 /* UIConfig.swift */,
+				4CAEAB9C204A453000A2078C /* AppIconCropping.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
 				4CD2B89420480CBF00E21BF4 /* ApiErrors.swift in Sources */,
 				4CD2B8892047F76F00E21BF4 /* ITunesDataSource.swift in Sources */,
+				4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */,
 				4CD2B8802047F51800E21BF4 /* ParsingKeyProtocol.swift in Sources */,
 				4CD2B8872047F70C00E21BF4 /* AppDataSourceProtocol.swift in Sources */,
 				4CD2B88F2048014E00E21BF4 /* ITunesDataAPI.swift in Sources */,
