@@ -20,4 +20,5 @@ protocol AppDataSourceDelegate: class
     func failedGettingFreeAppsRatings()
     
     func isSearching() -> Bool
+    func grossingAppSizeUpdated(size: Int)
 }

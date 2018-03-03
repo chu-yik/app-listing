@@ -168,4 +168,9 @@ extension MainViewController: AppDataSourceDelegate
     {
         return currentSearch != nil
     }
+    
+    func grossingAppSizeUpdated(size: Int)
+    {
+        grossingAppView.showEmptyMessage(size == 0)
+    }
 }

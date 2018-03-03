@@ -51,6 +51,11 @@ class GrossingAppView: UIView
         grossingAppCollectionView.reloadData()
     }
     
+    func showEmptyMessage(_ show: Bool)
+    {
+        grossingAppCollectionView.backgroundView?.isHidden = !show
+    }
+    
     private func addHeaderLabel()
     {
         headerLabel = UILabel(frame: CGRect.zero)
@@ -78,7 +83,7 @@ class GrossingAppView: UIView
         grossingAppCollectionView.allowsSelection = false
         grossingAppCollectionView.showsHorizontalScrollIndicator = false
         grossingAppCollectionView.delegate = self
-        
+        grossingAppCollectionView.backgroundView = EmptyMessageView(frame: CGRect.zero)
         addSubview(grossingAppCollectionView)
         addCollectionViewConstraints()
     }

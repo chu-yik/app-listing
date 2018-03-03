@@ -218,7 +218,9 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return shouldUseSearchResult() ? grossingAppsFiltered.count : grossingApps.count
+        let count = shouldUseSearchResult() ? grossingAppsFiltered.count : grossingApps.count
+        delegate?.grossingAppSizeUpdated(size: count)
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
