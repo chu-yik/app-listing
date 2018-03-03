@@ -28,6 +28,8 @@ class ITunesDataSource: NSObject
     private var key: ParsingKeyProtocol
     private var detailKey: ParsingDetailKeyProtocol
     
+    private var fetchingInProgress = false
+    
     init(api: DataAPIProtocol, key: ParsingKeyProtocol, detailKey: ParsingDetailKeyProtocol)
     {
         self.api = api
@@ -84,7 +86,7 @@ extension ITunesDataSource: AppDataSourceProtocol
         fetch(from: api.freeApp, ifSuccessful: { (json) in
             self.freeApps = self.parse(json: json)
             self.createFreeAppIndexMapping()
-            self.fetchRating(fromIndex: 0)
+            self.fetchRating()
         }) { (eror) in
             self.delegate?.failedGettingFreeApps()
         }
@@ -110,10 +112,10 @@ extension ITunesDataSource: AppDataSourceProtocol
         }
     }
     
-    private func appIdsToSearch(fromIndex: Int) -> [String]
+    private func appIdsToSearch() -> [String]
     {
         var ids: [String] = []
-        var index = fromIndex
+        var index = 0
         
         let target = targetFreeAppList()
         while ids.count < DataSizeConfig.pageSize
@@ -129,13 +131,14 @@ extension ITunesDataSource: AppDataSourceProtocol
         return ids
     }
     
-    private func fetchRating(fromIndex: Int)
+    private func fetchRating()
     {
         do
         {
             delegate?.isLoadingFreeApp(true)
-            let ids = appIdsToSearch(fromIndex: fromIndex)
+            let ids = appIdsToSearch()
             let url = try api.urlToSearch(ids: ids)
+            fetchingInProgress = true
             fetch(from: url, ifSuccessful: { (json) in
                 let newDetails = self.parseDetail(json: json)
                 print("acquired \(newDetails.count) new ratings")
@@ -144,8 +147,10 @@ extension ITunesDataSource: AppDataSourceProtocol
                     self.freeAppsWithRating[entry.app.id] = entry
                 }
                 print("total app with ratings now: \(self.freeAppsWithRating.count)")
+                self.fetchingInProgress = false
                 self.delegate?.freeAppDataUpdated()
             }, ifFailed: { (error) in
+                self.fetchingInProgress = false
                 self.delegate?.failedGettingFreeAppsRatings()
             })
         }
@@ -257,11 +262,16 @@ extension ITunesDataSource: UITableViewDataSource
         {
             cell.appWithRating = appWithRating
         }
+        else
+        {
+            print("missing rating at index \(index)")
+            fetchRating()
+        }
         
         if shouldFetchNextPage(currentIndex: index)
         {
             print("fetching more ratings ... current index \(index)")
-            fetchRating(fromIndex: index + 1)
+            fetchRating()
         }
         
         return cell
@@ -269,12 +279,17 @@ extension ITunesDataSource: UITableViewDataSource
     
     private func shouldFetchNextPage(currentIndex: Int) -> Bool
     {
-        let target = targetFreeAppList()
-        if currentIndex + 1 < target.count
-        {
-            let nextId = target[currentIndex + 1].id
-            return !freeAppsWithRating.keys.contains(nextId)
+        guard !fetchingInProgress else {
+            print("already fetching more ... current index \(currentIndex)")
+            return false
         }
-        return false
+        
+        let target = targetFreeAppList()
+        guard target.count > currentIndex + 1 else {
+            return false
+        }
+
+        let nextId = target[currentIndex + 1].id
+        return !freeAppsWithRating.keys.contains(nextId)
     }
 }
