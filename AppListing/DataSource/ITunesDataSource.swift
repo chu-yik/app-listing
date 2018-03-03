@@ -28,6 +28,8 @@ class ITunesDataSource: NSObject
     private var key: ParsingKeyProtocol
     private var detailKey: ParsingDetailKeyProtocol
     
+    private var fetchingInProgress = false
+    
     init(api: DataAPIProtocol, key: ParsingKeyProtocol, detailKey: ParsingDetailKeyProtocol)
     {
         self.api = api
@@ -136,6 +138,7 @@ extension ITunesDataSource: AppDataSourceProtocol
             delegate?.isLoadingFreeApp(true)
             let ids = appIdsToSearch(fromIndex: fromIndex)
             let url = try api.urlToSearch(ids: ids)
+            fetchingInProgress = true
             fetch(from: url, ifSuccessful: { (json) in
                 let newDetails = self.parseDetail(json: json)
                 print("acquired \(newDetails.count) new ratings")
@@ -144,8 +147,10 @@ extension ITunesDataSource: AppDataSourceProtocol
                     self.freeAppsWithRating[entry.app.id] = entry
                 }
                 print("total app with ratings now: \(self.freeAppsWithRating.count)")
+                self.fetchingInProgress = false
                 self.delegate?.freeAppDataUpdated()
             }, ifFailed: { (error) in
+                self.fetchingInProgress = false
                 self.delegate?.failedGettingFreeAppsRatings()
             })
         }
@@ -269,12 +274,17 @@ extension ITunesDataSource: UITableViewDataSource
     
     private func shouldFetchNextPage(currentIndex: Int) -> Bool
     {
-        let target = targetFreeAppList()
-        if currentIndex + 1 < target.count
-        {
-            let nextId = target[currentIndex + 1].id
-            return !freeAppsWithRating.keys.contains(nextId)
+        guard !fetchingInProgress else {
+            print("already fetching more ... current index \(currentIndex)")
+            return false
         }
-        return false
+        
+        let target = targetFreeAppList()
+        guard target.count > currentIndex + 1 else {
+            return false
+        }
+
+        let nextId = target[currentIndex + 1].id
+        return !freeAppsWithRating.keys.contains(nextId)
     }
 }
