@@ -41,16 +41,11 @@ class MainViewController: UIViewController
     {
         return true
     }
-    
-    private func createGrossingAppViewAsHeader()
-    {
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConfig.Grossing.sectionHeight)
-        grossingAppView = GrossingAppView(frame: frame)
-        grossingAppView.connectDataSource(dataSource: dataSource)
-        grossingAppView.registerGrossingAppCell()
-        freeAppTableView.tableHeaderView = grossingAppView
-    }
-    
+}
+
+// MARK: - Private helpers
+extension MainViewController
+{
     private func createDataSource()
     {
         let api = ITunesDataAPI(grossingAppSize: DataSizeConfig.grossing,
@@ -61,6 +56,15 @@ class MainViewController: UIViewController
         dataSource.delegate = self
         dataSource.fetchGrossingApps()
         dataSource.fetchFreeApps()
+    }
+    
+    private func createGrossingAppViewAsHeader()
+    {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: UIConfig.Grossing.sectionHeight)
+        grossingAppView = GrossingAppView(frame: frame)
+        grossingAppView.connectDataSource(dataSource: dataSource)
+        grossingAppView.registerGrossingAppCell()
+        freeAppTableView.tableHeaderView = grossingAppView
     }
     
     private func connectFreeAppView()
@@ -143,7 +147,7 @@ extension MainViewController
         freeAppTableView.tableFooterView = indicatorView
     }
     
-    func showLoadingFreeAppIndicator(_ show: Bool)
+    private func showLoadingFreeAppIndicator(_ show: Bool)
     {
         freeAppTableView.tableFooterView?.isHidden = !show
     }
