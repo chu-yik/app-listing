@@ -22,6 +22,7 @@ class GrossingAppCell: UICollectionViewCell
     {
         super.awakeFromNib()
         configureImageView()
+        configureImageCropping()
     }
     
     var app: App? {
@@ -47,9 +48,14 @@ class GrossingAppCell: UICollectionViewCell
     private func configureImageView()
     {
         appImageView.contentMode = .scaleAspectFit
-        appImageView.layer.cornerRadius = UIConfig.Grossing.cornerRadius
-        appImageView.layer.borderWidth = UIConfig.Grossing.borderWidth
-        appImageView.layer.borderColor = UIConfig.Grossing.borderColor
         appImageView.clipsToBounds = true
+    }
+    
+    private func configureImageCropping()
+    {
+        let type = AppIconCropping.roundCorner
+        appImageView.layer.cornerRadius = type.cornerRadisu(sideLength: appImageView.frame.width)
+        appImageView.layer.borderWidth = UIConfig.AppImage.borderWidth
+        appImageView.layer.borderColor = UIConfig.AppImage.borderColor
     }
 }

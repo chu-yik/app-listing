@@ -26,13 +26,17 @@ enum UIConfig
         static let labelTitle = "推介"
         static let labelFont = UIFont.boldSystemFont(ofSize: 20)
         static let cornerRadius = cellWidth / 4.0
-        static let borderWidth: CGFloat = 0.2
-        static let borderColor = UIColor.gray.cgColor
         static let spacing: CGFloat = 15.0
     }
     /// configuration specific to the free app section
     enum Free
     {
         static let cellHeight: CGFloat = 100.0
+    }
+    /// configuration for App UIImageView
+    enum AppImage
+    {
+        static let borderWidth: CGFloat = 0.2
+        static let borderColor = UIColor.gray.cgColor
     }
 }

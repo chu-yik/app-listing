@@ -23,6 +23,7 @@ class FreeAppCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
+        configureImageView()
     }
     
     var index: Int? {
@@ -30,7 +31,8 @@ class FreeAppCell: UITableViewCell
             if let index = index
             {
                 indexLabel.text = "\(index)"
-                configureImageView()
+                let type = AppIconCropping.forIndex(index: index)
+                configureImageCropping(type: type)
             }
         }
     }
@@ -60,8 +62,14 @@ class FreeAppCell: UITableViewCell
     private func configureImageView()
     {
         appImageView.contentMode = .scaleAspectFit
-        // TODO: round or circle clipping here
         appImageView.clipsToBounds = true
+    }
+    
+    private func configureImageCropping(type: AppIconCropping)
+    {
+        appImageView.layer.cornerRadius = type.cornerRadisu(sideLength: appImageView.frame.width)
+        appImageView.layer.borderWidth = UIConfig.AppImage.borderWidth
+        appImageView.layer.borderColor = UIConfig.AppImage.borderColor
     }
     
     private func update(averageRating: Double, ratingCount: String)
