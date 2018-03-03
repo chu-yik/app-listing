@@ -19,6 +19,7 @@ class ITunesDataSource: NSObject
     var grossingApps: [App] = []
     var grossingAppsFiltered: [App] = []
     var freeApps: [App] = []
+    var freeAppsFiltered: [App] = []
     
     var freeAppIndexMap: [String: Int] = [:]
     var freeAppsWithRating: [String : AppWithRating] = [:]
@@ -50,6 +51,19 @@ extension ITunesDataSource
     {
         return delegate?.isSearching() ?? false
     }
+    
+    private func targetFreeAppList() -> [App]
+    {
+        return shouldUseSearchResult() ? freeAppsFiltered : freeApps
+    }
+    
+    private func numOfAppsWithRatingInFreeAppsFiltered() -> Int
+    {
+        let filteredIds = freeAppsFiltered.map { $0.id }
+        let ratingsAcquired = freeAppsWithRating.keys.filter { filteredIds.contains($0) }
+        print("filtered free apps that already acquired rating: \(ratingsAcquired.count)")
+        return ratingsAcquired.count
+    }
 }
 
 extension ITunesDataSource: AppDataSourceProtocol
@@ -78,8 +92,12 @@ extension ITunesDataSource: AppDataSourceProtocol
     func filterData(withSearch search: String)
     {
         grossingAppsFiltered = grossingApps.filter { searchFor(str: search, inApp: $0) }
-        print("search \(search) found \(grossingAppsFiltered.count) results in grossing App")
         self.delegate?.grossingAppDataUpdated()
+        
+        freeAppsFiltered = freeApps.filter { searchFor(str: search, inApp: $0) }
+        self.delegate?.freeAppDataUpdated()
+        
+        print("search for \(search) ...\nfound \(grossingAppsFiltered.count) results in grossing App, \(freeAppsFiltered.count) results in free App")
     }
     
     private func createFreeAppIndexMapping()
@@ -95,10 +113,12 @@ extension ITunesDataSource: AppDataSourceProtocol
     {
         var ids: [String] = []
         var index = fromIndex
+        
+        let target = targetFreeAppList()
         while ids.count < DataSizeConfig.pageSize
-            && index < freeApps.count
+            && index < target.count
         {
-            let id = freeApps[index].id
+            let id = target[index].id
             if !freeAppsWithRating.keys.contains(id)
             {
                 ids.append(id)
@@ -224,7 +244,7 @@ extension ITunesDataSource: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return freeAppsWithRating.count
+        return shouldUseSearchResult() ? numOfAppsWithRatingInFreeAppsFiltered() : freeAppsWithRating.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -232,7 +252,8 @@ extension ITunesDataSource: UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
      
         let index = indexPath.row
-        let id = freeApps[index].id
+        let target = targetFreeAppList()
+        let id = target[index].id
         cell.index = index + 1
         if let appWithRating = freeAppsWithRating[id]
         {
@@ -250,9 +271,10 @@ extension ITunesDataSource: UITableViewDataSource
     
     private func shouldFetchNextPage(currentIndex: Int) -> Bool
     {
-        if currentIndex + 1 < freeApps.count
+        let target = targetFreeAppList()
+        if currentIndex + 1 < target.count
         {
-            let nextId = freeApps[currentIndex + 1].id
+            let nextId = target[currentIndex + 1].id
             return !freeAppsWithRating.keys.contains(nextId)
         }
         return false
