@@ -75,6 +75,6 @@ class FreeAppCell: UITableViewCell
     private func update(averageRating: Double, ratingCount: String)
     {
         ratingView.rating = averageRating
-        ratingView.text = "(\(ratingCount))"
+        ratingView.text = "(\(ratingCount.isEmpty ? "0" : ratingCount))"
     }
 }
