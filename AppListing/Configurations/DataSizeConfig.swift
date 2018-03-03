@@ -10,6 +10,6 @@
 enum DataSizeConfig
 {
     static let grossing = 10
-    static let free = 30
+    static let free = 100
     static let pageSize = 10
 }
