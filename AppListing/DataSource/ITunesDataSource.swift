@@ -82,7 +82,10 @@ extension ITunesDataSource: AppDataSourceProtocol
         delegate?.isLoadingFreeApp(true)
         fetch(from: api.freeApp, ifSuccessful: { (json) in
             self.freeApps = self.parser.parse(json: json)
-            self.fetchRating()
+            if self.freeAppRatings.count < DataSizeConfig.pageSize
+            {
+                self.fetchRating()
+            }
         }) { (eror) in
             self.delegate?.failedGettingFreeApps()
         }
