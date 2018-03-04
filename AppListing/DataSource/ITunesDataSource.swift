@@ -60,7 +60,6 @@ extension ITunesDataSource
     {
         let filteredIds = freeAppsFiltered.map { $0.id }
         let ratingsAcquired = freeAppRatings.keys.filter { filteredIds.contains($0) }
-        print("filtered free apps that already acquired rating: \(ratingsAcquired.count)")
         return ratingsAcquired.count
     }
 }
@@ -98,8 +97,6 @@ extension ITunesDataSource: AppDataSourceProtocol
         
         freeAppsFiltered = freeApps.filter { searchFor(str: search, inApp: $0) }
         self.delegate?.freeAppDataUpdated()
-        
-        print("search for \(search) ...\nfound \(grossingAppsFiltered.count) results in grossing App, \(freeAppsFiltered.count) results in free App")
     }
     
     private func appIdsToSearch() -> [String]
@@ -134,12 +131,10 @@ extension ITunesDataSource: AppDataSourceProtocol
             fetchingInProgress = true
             fetch(from: url, ifSuccessful: { (json) in
                 let newRatings = self.parser.parseRating(json: json)
-                print("acquired \(newRatings.count) new ratings")
                 for rating in newRatings
                 {
                     self.freeAppRatings[rating.id] = rating
                 }
-                print("total app with ratings now: \(self.freeAppRatings.count)")
                 self.fetchingInProgress = false
                 self.delegate?.freeAppDataUpdated()
             }, ifFailed: { (error) in
@@ -222,13 +217,11 @@ extension ITunesDataSource: UITableViewDataSource
             
             if shouldFetchNextPage(currentIndex: index)
             {
-                print("fetching more rating ... after index \(index)")
                 fetchRating()
             }
         }
         else
         {
-            print("fetching missing rating ... at index \(index)")
             fetchRating()
         }
         
