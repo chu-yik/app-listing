@@ -12,5 +12,5 @@ import SwiftyJSON
 protocol JsonParserProtocol
 {
     func parse(json: JSON) -> [App]
-    func parseDetail(json: JSON) -> [AppWithRating]
+    func parseRating(json: JSON) -> [AppRating]
 }
