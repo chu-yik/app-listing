@@ -37,15 +37,23 @@ class FreeAppCell: UITableViewCell
         }
     }
     
-    var appWithRating: AppWithRating? {
+    var app: App? {
         didSet {
-            if let appWithRating = appWithRating
+            if let app = app
             {
-                nameLabel.text = appWithRating.app.name
-                categoryLabel.text = appWithRating.app.category
-                updateImageFrom(appWithRating.app.imageUrl)
-                update(averageRating: appWithRating.rating,
-                       ratingCount: appWithRating.count)
+                nameLabel.text = app.name
+                categoryLabel.text = app.category
+                updateImageFrom(app.imageUrl)
+            }
+        }
+    }
+    
+    var appRating: AppRating? {
+        didSet {
+            if let appRating = appRating
+            {
+                update(averageRating: appRating.rating,
+                       ratingCount: appRating.count)
             }
         }
     }

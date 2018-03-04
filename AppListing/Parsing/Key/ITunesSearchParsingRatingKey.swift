@@ -1,5 +1,5 @@
 //
-//  ITunesSearchParsingDetailKey.swift
+//  ITunesSearchParsingRatingKey.swift
 //  AppListing
 //
 //  Created by MC on 2/3/2018.
@@ -8,8 +8,8 @@
 
 import SwiftyJSON
 
-/// Implementation of ParsingDetailKeyProtocol, keys are specific to ITunes Search API
-struct ITunesSearchParsingDetailKey: ParsingDetailKeyProtocol
+/// Implementation of ParsingRatingKeyProtocol, keys are specific to ITunes Search API
+struct ITunesSearchParsingRatingKey: ParsingRatingKeyProtocol
 {
     let dataStart: [JSONSubscriptType] = ["results"]
     let id: [JSONSubscriptType] = ["trackId"]
