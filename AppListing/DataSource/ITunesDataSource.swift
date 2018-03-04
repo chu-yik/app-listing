@@ -24,16 +24,14 @@ class ITunesDataSource: NSObject
     var freeAppRatings: [String : AppRating] = [:]
     
     private var api: DataAPIProtocol
-    private var key: ParsingKeyProtocol
-    private var detailKey: ParsingRatingKeyProtocol
+    private var parser: JsonParserProtocol
     
     private var fetchingInProgress = false
     
-    init(api: DataAPIProtocol, key: ParsingKeyProtocol, detailKey: ParsingRatingKeyProtocol)
+    init(api: DataAPIProtocol, parser: JsonParserProtocol)
     {
         self.api = api
-        self.key = key
-        self.detailKey = detailKey
+        self.parser = parser
     }
 }
 
@@ -72,7 +70,7 @@ extension ITunesDataSource: AppDataSourceProtocol
     func fetchGrossingApps()
     {
         fetch(from: api.grossingApp, ifSuccessful: { (json) in
-            self.grossingApps = self.parse(json: json)
+            self.grossingApps = self.parser.parse(json: json)
             self.delegate?.grossingAppDataUpdated()
         }) { (eror) in
             self.delegate?.failedGettingGrossingApps()
@@ -83,7 +81,7 @@ extension ITunesDataSource: AppDataSourceProtocol
     {
         delegate?.isLoadingFreeApp(true)
         fetch(from: api.freeApp, ifSuccessful: { (json) in
-            self.freeApps = self.parse(json: json)
+            self.freeApps = self.parser.parse(json: json)
             self.fetchRating()
         }) { (eror) in
             self.delegate?.failedGettingFreeApps()
@@ -132,11 +130,11 @@ extension ITunesDataSource: AppDataSourceProtocol
             let url = try api.urlToSearch(ids: ids)
             fetchingInProgress = true
             fetch(from: url, ifSuccessful: { (json) in
-                let newDetails = self.parseDetail(json: json)
-                print("acquired \(newDetails.count) new ratings")
-                for entry in newDetails
+                let newRatings = self.parser.parseRating(json: json)
+                print("acquired \(newRatings.count) new ratings")
+                for rating in newRatings
                 {
-                    self.freeAppRatings[entry.id] = entry
+                    self.freeAppRatings[rating.id] = rating
                 }
                 print("total app with ratings now: \(self.freeAppRatings.count)")
                 self.fetchingInProgress = false
@@ -167,40 +165,6 @@ extension ITunesDataSource: AppDataSourceProtocol
                 failureCallback(error)
             }
         }
-    }
-    
-    private func parse(json: JSON) -> [App]
-    {
-        var apps: [App] = []
-        let entries = json[key.dataStart].arrayValue
-        for entry in entries
-        {
-            let app = App(id: entry[key.id].stringValue,
-                          name: entry[key.name].stringValue,
-                          category: entry[key.category].stringValue,
-                          artist: entry[key.artist].stringValue,
-                          summary: entry[key.summary].stringValue,
-                          imageUrl: entry[key.imageUrl].stringValue)
-            apps.append(app)
-        }
-        return apps
-    }
-    
-    private func parseDetail(json: JSON) -> [AppRating]
-    {
-        var appsWithRating: [AppRating] = []
-        let entries = json[detailKey.dataStart].arrayValue
-        for entry in entries
-        {
-            let id = entry[detailKey.id].stringValue
-            let rating = entry[detailKey.rating].doubleValue
-            let count = entry[detailKey.count].stringValue
-            let appWithRating = AppRating(id: id,
-                                          rating: rating,
-                                          count: count)
-            appsWithRating.append(appWithRating)
-        }
-        return appsWithRating
     }
 }
 
