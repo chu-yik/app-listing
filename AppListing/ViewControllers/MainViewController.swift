@@ -32,6 +32,8 @@ class MainViewController: UIViewController
         connectFreeAppView()
         
         createLoadingFreeAppIndicator()
+        
+        addRefreshControl()
     }
 
     override func didReceiveMemoryWarning()
@@ -136,6 +138,28 @@ extension MainViewController: UISearchBarDelegate
     }
 }
 
+// MARK: - refresh control
+extension MainViewController
+{
+    private func addRefreshControl()
+    {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: .refresh, for: .valueChanged)
+        freeAppTableView.refreshControl = refreshControl
+    }
+    
+    @objc func refresh()
+    {
+        dataSource.fetchGrossingApps()
+        dataSource.fetchFreeApps()
+    }
+    
+    private func stopDisplayingRefreshing()
+    {
+        freeAppTableView.refreshControl?.endRefreshing()
+    }
+}
+
 // MARK: - loading indicator
 extension MainViewController
 {
@@ -153,6 +177,23 @@ extension MainViewController
     private func showLoadingFreeAppIndicator(_ show: Bool)
     {
         freeAppTableView.tableFooterView?.isHidden = !show
+    }
+}
+
+// MARK: - network error handling
+extension MainViewController
+{
+    private func showNetworkErrorAlert(message: String, handler: ((UIAlertAction) -> Void)?)
+    {
+        let title = UIConfig.NetworkError.title
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: UIConfig.NetworkError.actionTitle,
+                                         style: .cancel,
+                                         handler: handler)
+        alert.addAction(cancelAction)
+        show(alert, sender: self)
     }
 }
 
@@ -175,30 +216,40 @@ extension MainViewController: AppDataSourceDelegate
 {
     func grossingAppDataUpdated()
     {
+        stopDisplayingRefreshing()
         grossingAppView.reload()
+        
     }
     
     func failedGettingGrossingApps()
     {
-        print("failed getting grossing apps")
+        showNetworkErrorAlert(message: UIConfig.NetworkError.failedListingGrossingMessage) { _ in
+            self.stopDisplayingRefreshing()
+        }
     }
     
     func freeAppDataUpdated()
     {
+        stopDisplayingRefreshing()
         showLoadingFreeAppIndicator(false)
         freeAppTableView.reloadData()
     }
     
     func failedGettingFreeApps()
     {
-        showLoadingFreeAppIndicator(false)
-        print("failed getting free apps")
+        showNetworkErrorAlert(message: UIConfig.NetworkError.failedListingFreeMessage) { _ in
+            self.stopDisplayingRefreshing()
+            self.showLoadingFreeAppIndicator(false)
+        }
     }
     
     func failedGettingFreeAppsRatings()
     {
-        showLoadingFreeAppIndicator(false)
-        print("failed getting ratings for free apps")
+
+        showNetworkErrorAlert(message: UIConfig.NetworkError.failedGettingRatingsMessge) { _ in
+            self.stopDisplayingRefreshing()
+            self.showLoadingFreeAppIndicator(false)
+        }
     }
     
     func isSearching() -> Bool
@@ -215,4 +266,10 @@ extension MainViewController: AppDataSourceDelegate
     {
         showLoadingFreeAppIndicator(loading)
     }
+}
+
+// MARK: - selector
+fileprivate extension Selector
+{
+    static let refresh = #selector(MainViewController.refresh)
 }
