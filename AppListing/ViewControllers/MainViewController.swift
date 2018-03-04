@@ -53,7 +53,7 @@ extension MainViewController
         let api = ITunesDataAPI(grossingAppSize: DataSizeConfig.grossing,
                                 freeAppSize: DataSizeConfig.free)
         let key = ITunesRssParsingKey()
-        let detailKey = ITunesSearchParsingDetailKey()
+        let detailKey = ITunesSearchParsingRatingKey()
         dataSource = ITunesDataSource(api: api, key: key, detailKey: detailKey)
         dataSource.delegate = self
         dataSource.fetchGrossingApps()

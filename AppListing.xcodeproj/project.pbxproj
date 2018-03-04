@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E422048E6B200B0C161 /* FreeAppCell.swift */; };
 		4C124E452048E6B200B0C161 /* FreeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C124E432048E6B200B0C161 /* FreeAppCell.xib */; };
-		4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */; };
-		4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */; };
+		4C124E472048F1DC00B0C161 /* ParsingRatingKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E462048F1DC00B0C161 /* ParsingRatingKeyProtocol.swift */; };
+		4C124E492048F25D00B0C161 /* ITunesSearchParsingRatingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E482048F25D00B0C161 /* ITunesSearchParsingRatingKey.swift */; };
 		4C124E4B2048F2D300B0C161 /* AppRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppRating.swift */; };
 		4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */; };
 		4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9C204A453000A2078C /* AppIconCropping.swift */; };
@@ -55,8 +55,8 @@
 		2738CBE0A6DA6D8D1900CD4D /* Pods_AppListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C124E422048E6B200B0C161 /* FreeAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeAppCell.swift; sourceTree = "<group>"; };
 		4C124E432048E6B200B0C161 /* FreeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeAppCell.xib; sourceTree = "<group>"; };
-		4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingDetailKeyProtocol.swift; sourceTree = "<group>"; };
-		4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchParsingDetailKey.swift; sourceTree = "<group>"; };
+		4C124E462048F1DC00B0C161 /* ParsingRatingKeyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingRatingKeyProtocol.swift; sourceTree = "<group>"; };
+		4C124E482048F25D00B0C161 /* ITunesSearchParsingRatingKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchParsingRatingKey.swift; sourceTree = "<group>"; };
 		4C124E4A2048F2D300B0C161 /* AppRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRating.swift; sourceTree = "<group>"; };
 		4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSizeConfig.swift; sourceTree = "<group>"; };
 		4CAEAB9C204A453000A2078C /* AppIconCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCropping.swift; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 			isa = PBXGroup;
 			children = (
 				4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */,
-				4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */,
+				4C124E462048F1DC00B0C161 /* ParsingRatingKeyProtocol.swift */,
 				4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */,
-				4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */,
+				4C124E482048F25D00B0C161 /* ITunesSearchParsingRatingKey.swift */,
 			);
 			path = Key;
 			sourceTree = "<group>";
@@ -470,7 +470,7 @@
 				4CD2B87A2047EC5800E21BF4 /* GrossingAppView.swift in Sources */,
 				4CAEABA2204B803600A2078C /* CellSlideInAnimationProvider.swift in Sources */,
 				4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */,
-				4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */,
+				4C124E492048F25D00B0C161 /* ITunesSearchParsingRatingKey.swift in Sources */,
 				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
@@ -485,7 +485,7 @@
 				4CD2B8802047F51800E21BF4 /* ParsingKeyProtocol.swift in Sources */,
 				4CD2B8872047F70C00E21BF4 /* AppDataSourceProtocol.swift in Sources */,
 				4CD2B88F2048014E00E21BF4 /* ITunesDataAPI.swift in Sources */,
-				4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */,
+				4C124E472048F1DC00B0C161 /* ParsingRatingKeyProtocol.swift in Sources */,
 				4CAEABA5204B852000A2078C /* JsonParserProtocol.swift in Sources */,
 				4CD2B89620480F0600E21BF4 /* DataAPIProtocol.swift in Sources */,
 				4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */,

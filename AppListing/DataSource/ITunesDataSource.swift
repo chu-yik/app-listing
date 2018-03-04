@@ -25,11 +25,11 @@ class ITunesDataSource: NSObject
     
     private var api: DataAPIProtocol
     private var key: ParsingKeyProtocol
-    private var detailKey: ParsingDetailKeyProtocol
+    private var detailKey: ParsingRatingKeyProtocol
     
     private var fetchingInProgress = false
     
-    init(api: DataAPIProtocol, key: ParsingKeyProtocol, detailKey: ParsingDetailKeyProtocol)
+    init(api: DataAPIProtocol, key: ParsingKeyProtocol, detailKey: ParsingRatingKeyProtocol)
     {
         self.api = api
         self.key = key
