@@ -50,4 +50,13 @@ enum UIConfig
     {
         static let height: CGFloat = 30.0
     }
+    /// configuration for network error
+    enum NetworkError
+    {
+        static let title = "Network Error"
+        static let actionTitle = "OK"
+        static let failedListingGrossingMessage = "Failed listing grossing apps - check network and pull to reload"
+        static let failedListingFreeMessage = "Failed listing free apps - check network and pull to reload"
+        static let failedGettingRatingsMessge = "Failed getting rating info - check network and pull to reload"
+    }
 }
