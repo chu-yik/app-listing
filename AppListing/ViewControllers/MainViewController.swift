@@ -17,6 +17,8 @@ class MainViewController: UIViewController
     private var dataSource: AppDataSourceProtocol! = nil
     private var currentSearch: String? = nil
     
+    private var animationProvider = CellSlideInAnimationProvider()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -159,6 +161,11 @@ extension MainViewController: UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         return UIConfig.Free.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath)
+    {
+        animationProvider.animate(cell: cell, forRowAt: indexPath)
     }
 }
 
