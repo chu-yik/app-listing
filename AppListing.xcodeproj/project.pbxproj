@@ -16,6 +16,8 @@
 		4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9C204A453000A2078C /* AppIconCropping.swift */; };
 		4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */; };
 		4CAEABA2204B803600A2078C /* CellSlideInAnimationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEABA1204B803600A2078C /* CellSlideInAnimationProvider.swift */; };
+		4CAEABA5204B852000A2078C /* JsonParserProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEABA4204B852000A2078C /* JsonParserProtocol.swift */; };
+		4CAEABA7204B867A00A2078C /* ITunesJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEABA6204B867A00A2078C /* ITunesJsonParser.swift */; };
 		4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */; };
 		4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8562047E27200E21BF4 /* Assets.xcassets */; };
 		4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8582047E27200E21BF4 /* LaunchScreen.storyboard */; };
@@ -60,6 +62,8 @@
 		4CAEAB9C204A453000A2078C /* AppIconCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCropping.swift; sourceTree = "<group>"; };
 		4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMessageView.swift; sourceTree = "<group>"; };
 		4CAEABA1204B803600A2078C /* CellSlideInAnimationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSlideInAnimationProvider.swift; sourceTree = "<group>"; };
+		4CAEABA4204B852000A2078C /* JsonParserProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParserProtocol.swift; sourceTree = "<group>"; };
+		4CAEABA6204B867A00A2078C /* ITunesJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesJsonParser.swift; sourceTree = "<group>"; };
 		4CD2B84C2047E27200E21BF4 /* AppListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CD2B8562047E27200E21BF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +117,17 @@
 				4CAEABA1204B803600A2078C /* CellSlideInAnimationProvider.swift */,
 			);
 			path = Animation;
+			sourceTree = "<group>";
+		};
+		4CAEABA3204B84FF00A2078C /* Key */ = {
+			isa = PBXGroup;
+			children = (
+				4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */,
+				4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */,
+				4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */,
+				4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */,
+			);
+			path = Key;
 			sourceTree = "<group>";
 		};
 		4CD2B8432047E27200E21BF4 = {
@@ -214,10 +229,9 @@
 		4CD2B87E2047F4CD00E21BF4 /* Parsing */ = {
 			isa = PBXGroup;
 			children = (
-				4CD2B87F2047F51800E21BF4 /* ParsingKeyProtocol.swift */,
-				4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */,
-				4CD2B8812047F5AD00E21BF4 /* ITunesRssParsingKey.swift */,
-				4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */,
+				4CAEABA3204B84FF00A2078C /* Key */,
+				4CAEABA4204B852000A2078C /* JsonParserProtocol.swift */,
+				4CAEABA6204B867A00A2078C /* ITunesJsonParser.swift */,
 			);
 			path = Parsing;
 			sourceTree = "<group>";
@@ -461,6 +475,7 @@
 				4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
 				4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */,
+				4CAEABA7204B867A00A2078C /* ITunesJsonParser.swift in Sources */,
 				4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */,
 				4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */,
 				4CD2B87D2047F3BA00E21BF4 /* App.swift in Sources */,
@@ -471,6 +486,7 @@
 				4CD2B8872047F70C00E21BF4 /* AppDataSourceProtocol.swift in Sources */,
 				4CD2B88F2048014E00E21BF4 /* ITunesDataAPI.swift in Sources */,
 				4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */,
+				4CAEABA5204B852000A2078C /* JsonParserProtocol.swift in Sources */,
 				4CD2B89620480F0600E21BF4 /* DataAPIProtocol.swift in Sources */,
 				4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */,
 				4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */,
