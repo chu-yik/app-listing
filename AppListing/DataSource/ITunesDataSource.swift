@@ -133,6 +133,9 @@ extension ITunesDataSource: AppDataSourceProtocol
     
     private func fetchRating()
     {
+        guard !fetchingInProgress else {
+            return
+        }
         do
         {
             delegate?.isLoadingFreeApp(true)
@@ -255,22 +258,24 @@ extension ITunesDataSource: UITableViewDataSource
         let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
      
         let index = indexPath.row
+        cell.index = index + 1
+        
         let target = targetFreeAppList()
         let id = target[index].id
-        cell.index = index + 1
+        
         if let appWithRating = freeAppsWithRating[id]
         {
             cell.appWithRating = appWithRating
+            
+            if shouldFetchNextPage(currentIndex: index)
+            {
+                print("fetching more rating ... after index \(index)")
+                fetchRating()
+            }
         }
         else
         {
-            print("missing rating at index \(index)")
-            fetchRating()
-        }
-        
-        if shouldFetchNextPage(currentIndex: index)
-        {
-            print("fetching more ratings ... current index \(index)")
+            print("fetching missing rating ... at index \(index)")
             fetchRating()
         }
         
@@ -279,11 +284,6 @@ extension ITunesDataSource: UITableViewDataSource
     
     private func shouldFetchNextPage(currentIndex: Int) -> Bool
     {
-        guard !fetchingInProgress else {
-            print("already fetching more ... current index \(currentIndex)")
-            return false
-        }
-        
         let target = targetFreeAppList()
         guard target.count > currentIndex + 1 else {
             return false
