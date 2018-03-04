@@ -11,7 +11,7 @@
 		4C124E452048E6B200B0C161 /* FreeAppCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C124E432048E6B200B0C161 /* FreeAppCell.xib */; };
 		4C124E472048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */; };
 		4C124E492048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */; };
-		4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppWithRating.swift */; };
+		4C124E4B2048F2D300B0C161 /* AppRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppRating.swift */; };
 		4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */; };
 		4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9C204A453000A2078C /* AppIconCropping.swift */; };
 		4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */; };
@@ -57,7 +57,7 @@
 		4C124E432048E6B200B0C161 /* FreeAppCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FreeAppCell.xib; sourceTree = "<group>"; };
 		4C124E462048F1DC00B0C161 /* ParsingDetailKeyProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingDetailKeyProtocol.swift; sourceTree = "<group>"; };
 		4C124E482048F25D00B0C161 /* ITunesSearchParsingDetailKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesSearchParsingDetailKey.swift; sourceTree = "<group>"; };
-		4C124E4A2048F2D300B0C161 /* AppWithRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWithRating.swift; sourceTree = "<group>"; };
+		4C124E4A2048F2D300B0C161 /* AppRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRating.swift; sourceTree = "<group>"; };
 		4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSizeConfig.swift; sourceTree = "<group>"; };
 		4CAEAB9C204A453000A2078C /* AppIconCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCropping.swift; sourceTree = "<group>"; };
 		4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMessageView.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				4CD2B87C2047F3BA00E21BF4 /* App.swift */,
-				4C124E4A2048F2D300B0C161 /* AppWithRating.swift */,
+				4C124E4A2048F2D300B0C161 /* AppRating.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -474,7 +474,7 @@
 				4CD2B88C2047FB2600E21BF4 /* AppDataSourceDelegate.swift in Sources */,
 				4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */,
 				4CD2B8822047F5AD00E21BF4 /* ITunesRssParsingKey.swift in Sources */,
-				4C124E4B2048F2D300B0C161 /* AppWithRating.swift in Sources */,
+				4C124E4B2048F2D300B0C161 /* AppRating.swift in Sources */,
 				4CAEABA7204B867A00A2078C /* ITunesJsonParser.swift in Sources */,
 				4CD2B89A2048227000E21BF4 /* GrossingAppCell.swift in Sources */,
 				4C124E442048E6B200B0C161 /* FreeAppCell.swift in Sources */,

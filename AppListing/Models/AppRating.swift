@@ -8,10 +8,10 @@
 
 import Foundation
 
-/// Model Object to hold an App with rating related info searched
-struct AppWithRating
+/// Model Object to hold an App rating info
+struct AppRating
 {
-    let app: App
+    let id: String
     let rating: Double
     let count: String
 }
