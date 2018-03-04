@@ -8,7 +8,7 @@ This is my submission of a programming test, the features include:
 
 Following is a sample screenshot for the running application:
 
-![Sample Screenshot](/Screenshots/sample.jpeg?raw=true | width=200)
+![Sample Screenshot](/Screenshots/sample.jpeg?raw=true)
 
 ### iTunes Data API
 There are 3 iTunes data API used, all data are acquired from the Hong Kong store
