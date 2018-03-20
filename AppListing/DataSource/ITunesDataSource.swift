@@ -155,13 +155,13 @@ extension ITunesDataSource: AppDataSourceProtocol
         Alamofire.request(url, method: .get)
             .validate()
             .responseJSON { response in
-            switch response.result
-            {
-            case .success(let value):
-                successCallback(JSON(value))
-            case .failure(let error):
-                failureCallback(error)
-            }
+                switch response.result
+                {
+                case .success(let value):
+                    successCallback(JSON(value))
+                case .failure(let error):
+                    failureCallback(error)
+                }
         }
     }
 }
@@ -182,7 +182,7 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.identifier, for: indexPath) as! GrossingAppCell
+        let cell: GrossingAppCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.app = shouldUseSearchResult() ? grossingAppsFiltered[indexPath.row] : grossingApps[indexPath.row]
         return cell
     }
@@ -202,8 +202,8 @@ extension ITunesDataSource: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
-     
+        let cell: FreeAppCell = tableView.dequeueReusableCell(for: indexPath)
+        
         let index = indexPath.row
         cell.index = index + 1
         
@@ -234,7 +234,7 @@ extension ITunesDataSource: UITableViewDataSource
         guard target.count > currentIndex + 1 else {
             return false
         }
-
+        
         let nextId = target[currentIndex + 1].id
         return !freeAppRatings.keys.contains(nextId)
     }
