@@ -12,8 +12,6 @@ import Cosmos
 /// Cell for displaying Free App with rating info
 class FreeAppCell: UITableViewCell
 {
-    static let identifier = "FreeAppCell"
-    
     @IBOutlet weak var appImageView: UIImageView!
     @IBOutlet weak var indexLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!

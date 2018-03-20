@@ -12,8 +12,6 @@ import Kingfisher
 /// Cell for displaying Grossing App
 class GrossingAppCell: UICollectionViewCell
 {
-    static let identifier = "GrossingAppCell"
-    
     @IBOutlet weak var appImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
