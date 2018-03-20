@@ -32,4 +32,16 @@ class CustomExtensionTests: XCTestCase
         let expected = "AppListing.GrossingAppCell"
         XCTAssertEqual(GrossingAppCell.defaultReuseIdentifier, expected)
     }
+    
+    func testNibNameWorksForFreeAppCell()
+    {
+        let expected = "FreeAppCell"
+        XCTAssertEqual(FreeAppCell.nibName, expected)
+    }
+    
+    func testNibNameWorksForGrossingAppCell()
+    {
+        let expected = "GrossingAppCell"
+        XCTAssertEqual(GrossingAppCell.nibName, expected)
+    }
 }
