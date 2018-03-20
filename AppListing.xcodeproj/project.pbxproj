@@ -14,6 +14,7 @@
 		4C124E4B2048F2D300B0C161 /* AppRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4A2048F2D300B0C161 /* AppRating.swift */; };
 		4C124E4D2048F4E700B0C161 /* DataSizeConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */; };
 		4C54C69B2060E61500C086A7 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54C69A2060E61500C086A7 /* ReusableView.swift */; };
+		4C54C69D2060E88800C086A7 /* CustomExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54C69C2060E88800C086A7 /* CustomExtensionTests.swift */; };
 		4CAEAB9D204A453000A2078C /* AppIconCropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9C204A453000A2078C /* AppIconCropping.swift */; };
 		4CAEAB9F204A51F500A2078C /* EmptyMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */; };
 		4CAEABA2204B803600A2078C /* CellSlideInAnimationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAEABA1204B803600A2078C /* CellSlideInAnimationProvider.swift */; };
@@ -22,7 +23,6 @@
 		4CD2B8502047E27200E21BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B84F2047E27200E21BF4 /* AppDelegate.swift */; };
 		4CD2B8572047E27200E21BF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8562047E27200E21BF4 /* Assets.xcassets */; };
 		4CD2B85A2047E27200E21BF4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8582047E27200E21BF4 /* LaunchScreen.storyboard */; };
-		4CD2B8652047E27300E21BF4 /* AppListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8642047E27300E21BF4 /* AppListingTests.swift */; };
 		4CD2B8722047E40B00E21BF4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8702047E40B00E21BF4 /* MainViewController.swift */; };
 		4CD2B8732047E40B00E21BF4 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD2B8712047E40B00E21BF4 /* MainViewController.xib */; };
 		4CD2B8772047E84900E21BF4 /* UIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2B8762047E84900E21BF4 /* UIConfig.swift */; };
@@ -61,6 +61,7 @@
 		4C124E4A2048F2D300B0C161 /* AppRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRating.swift; sourceTree = "<group>"; };
 		4C124E4C2048F4E700B0C161 /* DataSizeConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSizeConfig.swift; sourceTree = "<group>"; };
 		4C54C69A2060E61500C086A7 /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		4C54C69C2060E88800C086A7 /* CustomExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensionTests.swift; sourceTree = "<group>"; };
 		4CAEAB9C204A453000A2078C /* AppIconCropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconCropping.swift; sourceTree = "<group>"; };
 		4CAEAB9E204A51F500A2078C /* EmptyMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMessageView.swift; sourceTree = "<group>"; };
 		4CAEABA1204B803600A2078C /* CellSlideInAnimationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSlideInAnimationProvider.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		4CD2B8592047E27200E21BF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CD2B85B2047E27200E21BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B8602047E27300E21BF4 /* AppListingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppListingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4CD2B8642047E27300E21BF4 /* AppListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppListingTests.swift; sourceTree = "<group>"; };
 		4CD2B8662047E27300E21BF4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CD2B8702047E40B00E21BF4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4CD2B8712047E40B00E21BF4 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		4CD2B8632047E27300E21BF4 /* AppListingTests */ = {
 			isa = PBXGroup;
 			children = (
-				4CD2B8642047E27300E21BF4 /* AppListingTests.swift */,
+				4C54C69C2060E88800C086A7 /* CustomExtensionTests.swift */,
 				4CD2B890204804CC00E21BF4 /* ITunesDataAPITests.swift */,
 				4CD2B8662047E27300E21BF4 /* Info.plist */,
 			);
@@ -510,8 +510,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C54C69D2060E88800C086A7 /* CustomExtensionTests.swift in Sources */,
 				4CD2B891204804CC00E21BF4 /* ITunesDataAPITests.swift in Sources */,
-				4CD2B8652047E27300E21BF4 /* AppListingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
