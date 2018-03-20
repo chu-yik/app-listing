@@ -43,7 +43,7 @@ class GrossingAppView: UIView
     func registerGrossingAppCell()
     {
         let nib = UINib(nibName: GrossingAppCell.identifier, bundle: nil)
-        grossingAppCollectionView.register(nib, forCellWithReuseIdentifier: GrossingAppCell.identifier)
+        grossingAppCollectionView.register(nib, forCellWithReuseIdentifier: GrossingAppCell.defaultReuseIdentifier)
     }
     
     func reload()

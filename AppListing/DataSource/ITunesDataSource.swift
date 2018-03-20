@@ -182,7 +182,7 @@ extension ITunesDataSource: UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.identifier, for: indexPath) as! GrossingAppCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GrossingAppCell.defaultReuseIdentifier, for: indexPath) as! GrossingAppCell
         cell.app = shouldUseSearchResult() ? grossingAppsFiltered[indexPath.row] : grossingApps[indexPath.row]
         return cell
     }
@@ -202,7 +202,7 @@ extension ITunesDataSource: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.identifier, for: indexPath) as! FreeAppCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: FreeAppCell.defaultReuseIdentifier, for: indexPath) as! FreeAppCell
      
         let index = indexPath.row
         cell.index = index + 1
