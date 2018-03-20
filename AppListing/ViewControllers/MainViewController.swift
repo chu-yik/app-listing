@@ -74,8 +74,7 @@ extension MainViewController
     
     private func connectFreeAppView()
     {
-        let nib = UINib(nibName: FreeAppCell.nibName, bundle: nil)
-        freeAppTableView.register(nib, forCellReuseIdentifier: FreeAppCell.defaultReuseIdentifier)
+        freeAppTableView.register(FreeAppCell.self)
         freeAppTableView.dataSource = dataSource
         freeAppTableView.delegate = self
     }
