@@ -3,8 +3,9 @@
 //  AppListing
 //
 //  Created by MC on 20/3/2018.
-//  Copyright © 2018 MC. All rights reserved.
 //
+//  Credit to this gist by andreaantonioni:
+//  https://gist.github.com/andreaantonioni/0a8e7b07e7d62ade71a4a05bdb6367bf
 
 import UIKit
 
