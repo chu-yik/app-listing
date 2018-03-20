@@ -155,13 +155,13 @@ extension ITunesDataSource: AppDataSourceProtocol
         Alamofire.request(url, method: .get)
             .validate()
             .responseJSON { response in
-            switch response.result
-            {
-            case .success(let value):
-                successCallback(JSON(value))
-            case .failure(let error):
-                failureCallback(error)
-            }
+                switch response.result
+                {
+                case .success(let value):
+                    successCallback(JSON(value))
+                case .failure(let error):
+                    failureCallback(error)
+                }
         }
     }
 }
@@ -234,7 +234,7 @@ extension ITunesDataSource: UITableViewDataSource
         guard target.count > currentIndex + 1 else {
             return false
         }
-
+        
         let nextId = target[currentIndex + 1].id
         return !freeAppRatings.keys.contains(nextId)
     }
