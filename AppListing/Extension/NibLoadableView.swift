@@ -15,7 +15,7 @@ protocol NibLoadableView: class
     static var nibName: String { get }
 }
 
-extension NibLoadableView where Self: UIView
+extension NibLoadableView
 {
     static var nibName: String
     {
